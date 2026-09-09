@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="자율주행과 로봇을 다루는 임베디드시스템공학 전공자의 포트폴리오">
+  <meta name="keywords" content="Computer Vision, Robotics, ROS 2, RoboRacer, Physical AI, Portfolio">
+  <title>이름 — Computer Vision &amp; Robotics</title>
+
+  <!-- Open Graph (링크 공유 시 미리보기) -->
+  <meta property="og:title" content="이름 — Computer Vision & Robotics">
+  <meta property="og:description" content="자율주행과 로봇을 물리 세계에 붙이는 일을 합니다.">
+  <meta property="og:image" content="static/images/roboracer.jpg">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --ink: #1c1c1e;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #16457e;      /* 강조 색상 — 원하는 색으로 바꾸세요 */
+      --tint: #eef3fa;
+    }
+
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
+      color: var(--ink);
+      word-break: keep-all;   /* 한글 줄바꿈이 단어 중간에서 끊기지 않게 */
+    }
+
+    /* ---------- Hero ---------- */
+    .hero-portfolio { padding: 5rem 1.5rem 3rem; }
+    .name-title {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .name-subtitle {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+    .affiliation {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .link-buttons { margin-top: 1.75rem; }
+    .link-buttons .button {
+      background-color: var(--ink);
+      color: #fff;
+      border: none;
+      margin: 0.25rem;
+    }
+    .link-buttons .button:hover { background-color: var(--accent); color: #fff; }
+    .link-buttons .button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    /* ---------- Section ---------- */
+    .section-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .section-note {
+      color: var(--muted);
+      margin-top: -1rem;
+      margin-bottom: 1.75rem;
+    }
+    .lead-text {
+      font-size: 1.0625rem;
+      line-height: 1.85;
+      color: #333;
+      max-width: 46rem;
+    }
+    .divider { border-top: 1px solid var(--line); margin: 0; }
+
+    /* ---------- Teaser ---------- */
+    .teaser { padding: 0 1.5rem; }
+    .teaser-media {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    /* ---------- Project ---------- */
+    .project {
+      padding: 2.75rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .project:last-child { border-bottom: none; }
+    .project-media {
+      width: 100%;
+      border-radius: 6px;
+      background: var(--tint);
+      aspect-ratio: 4 / 3;
+      object-fit: contain;   /* 세로 사진도 잘리지 않게 */
+      padding: 0.5rem;
+      display: block;
+    }
+    .project-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .project-meta {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+    .project-award {
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--tint);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.85rem;
+    }
+    .project-body { line-height: 1.8; color: #333; }
+    .project-body ul { margin-top: 0.6rem; }
+    .project-body li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.35rem;
+    }
+    .project-body li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.75em;
+      width: 5px; height: 1px;
+      background: var(--muted);
+    }
+    .tag-row { margin-top: 1rem; }
+    .tag-row .tag {
+      background: var(--tint);
+      color: var(--accent);
+      font-weight: 500;
+      margin: 0 0.35rem 0.35rem 0;
+    }
+    .project-links { margin-top: 1rem; font-size: 0.9375rem; }
+    .project-links a {
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+
+    /* ---------- 진행 중 ---------- */
+    .wip-item .project-media { aspect-ratio: 16 / 9; }
+    .wip-item .project-title { font-size: 1.125rem; margin-top: 1rem; }
+    .wip-item .project-body { font-size: 0.9375rem; }
+
+    /* ---------- Timeline ---------- */
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline-date {
+      flex: 0 0 10rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.9375rem;
+    }
+    .timeline-body { flex: 1; line-height: 1.7; }
+    .timeline-body strong { font-weight: 600; }
+
+    /* ---------- Footer ---------- */
+    .footer { background: #fafafa; }
+    .footer-note { font-size: 0.875rem; color: var(--muted); }
+
+    /* ---------- Mobile ---------- */
+    @media screen and (max-width: 768px) {
+      .hero-portfolio { padding: 3rem 1.25rem 2rem; }
+      .name-title { font-size: 2.125rem; }
+      .name-subtitle { font-size: 1.0625rem; }
+      .timeline-item { flex-direction: column; gap: 0.25rem; }
+      .timeline-date { flex: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero-portfolio">
+  <div class="container is-max-desktop has-text-centered">
+    <!-- TODO: 실명으로 교체 -->
+    <h1 class="name-title">이름</h1>
+    <p class="name-subtitle">자율주행과 로봇을 물리 세계에 붙이는 일을 합니다</p>
+    <p class="affiliation">
+      인천대학교 정보기술대학 임베디드시스템공학과 · 인공지능응용시스템 연구실<br>
+      석사과정 (2026.09 ~) · 지도교수 황광일
+    </p>
+
+    <div class="link-buttons">
+      <!-- TODO: 아래 href를 본인 링크로 교체 -->
+      <a class="button is-rounded" href="https://github.com/YOUR_ID">
+        <span class="icon"><i class="fab fa-github"></i></span>
+        <span>GitHub</span>
+      </a>
+      <a class="button is-rounded" href="mailto:YOUR_EMAIL@inu.ac.kr">
+        <span class="icon"><i class="fas fa-envelope"></i></span>
+        <span>Email</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEASER (대표 영상) ============ -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <video class="teaser-media" autoplay muted loop playsinline
+           poster="static/images/roboracer_poster.jpg">
+      <source src="static/videos/roboracer.mp4" type="video/mp4">
+    </video>
+    <p class="has-text-centered mt-3 has-text-grey is-size-7">
+      RoboRacer 차량 주행 테스트
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ ABOUT ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">소개</h2>
+    <div class="lead-text">
+      <p>
+        인식한 것을 실제로 움직이는 하드웨어에 연결하는 지점에 관심이 있습니다.
+        학부에서는 임베디드시스템공학을 전공하며 자율주행 레이싱 스택과
+        주차 단속 로봇을 직접 만들어 돌려봤고,
+        지금은 인공지능응용시스템 연구실에서 컴퓨터비전과 Physical AI를 주제로
+        산업체 협업 과제를 함께 진행하고 있습니다.
+      </p>
+      <p class="mt-4">
+        논문을 읽는 것보다 그 방법을 실제 로봇 위에서 돌아가게 만드는 과정에서 배우는 게 많다고 생각합니다.
+        그래서 만든 것은 대부분 공개하고, 배운 것은 교육 프로그램으로 다시 정리합니다.
+      </p>
+    </div>
+
+    <div class="columns mt-5">
+      <div class="column">
+        <p class="has-text-weight-semibold mb-2">연구 관심</p>
+        <p class="has-text-grey-dark">
+          자율주행 (BEV fusion, occupancy grid) · Visual SLAM 및 3D 복원 ·
+          Sim-to-real 로봇 제어
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-weight-semibold mb-2">주로 쓰는 도구</p>
+        <p class="has-text-grey-dark">
+          ROS 2 · PyTorch · Python / C++ · Jetson Orin
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ PROJECTS ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">프로젝트</h2>
+
+    <!-- Project 1 : RoboRacer -->
+    <div class="project">
+      <div class="columns is-vcentered">
+        <div class="column is-5">
+          <img class="project-media" src="static/images/roboracer.jpg"
+               alt="RoboRacer 2026 차량 — LiDAR와 온보드 컴퓨터를 얹은 1/10 스케일 자율주행 레이싱 카">
+        </div>
+        <div class="column is-7">
+          <h3 class="project-title">RoboRacer 2026</h3>
+          <p class="project-meta">제29회 RoboRacer Autonomous Racing Competition (IFAC 2026) · ROS 2</p>
+          <!-- 수상했다면 아래 한 줄을 살리고, 아니면 지우세요 -->
+          <!-- <p class="project-award">수상 내역</p> -->
+          <div class="project-body">
+            <p>1/10 스케일 자율주행 차량의 동적 장애물 회피 파이프라인을 구축했습니다.</p>
+            <ul>
+              <li>기존 스플라인 플래너에 Frenet 좌표계 기반 플래닝을 통합해 추월 경로를 생성</li>
+              <li>상태 머신 파이프라인 디버깅 및 오버테이킹 섹터 설정</li>
+              <li>휠 엔코더 없이 ERPM 기반으로 VESC 캘리브레이션 (<code>erpm_calib</code> 패키지)</li>
+              <li>Jetson Orin Nano 온보드 배포 — 부트 루프를 전원 부족(brownout reset)으로 원인 규명</li>
+            </ul>
+          </div>
+          <div class="tag-row tags">
+            <span class="tag">ROS 2</span>
+            <span class="tag">Frenet Planner</span>
+            <span class="tag">VESC</span>
+            <span class="tag">Jetson Orin</span>
+          </div>
+          <p class="project-links">
+            <a href="#">코드</a>
+            <a href="#">기술 문서</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 : PARKY -->
+    <div class="project">
+      <div class="columns is-vcentered">
+        <div class="column is-5">
+          <img class="project-media" src="static/images/parky.jpg"
+               alt="PARKY — 뎁스 카메라와 표정 디스플레이를 갖춘 주차 단속 로봇">
+        </div>
+        <div class="column is-7">
+          <h3 class="project-title">PARKY — 지하주차장 불법주차 단속 로봇</h3>
+          <!-- TODO: 기간, 팀 구성, 맡은 역할로 교체 -->
+          <p class="project-meta">기간 · 팀 구성 · 담당 역할</p>
+          <!-- <p class="project-award">수상 내역</p> -->
+          <div class="project-body">
+            <p>
+              지하주차장을 자율 주행하며 장애인 구역과 소방 구역의 불법주차 차량을
+              찾아내는 로봇입니다.
+            </p>
+            <!-- TODO: 아래 항목을 실제 내용으로 교체 -->
+            <ul>
+              <li>주행: 어떤 방식으로 주차장을 순회했는지 (SLAM, 웨이포인트 등)</li>
+              <li>인식: 번호판·구역 판별을 어떻게 처리했는지</li>
+              <li>가장 어려웠던 문제 하나와 그걸 어떻게 풀었는지</li>
+            </ul>
+          </div>
+          <div class="tag-row tags">
+            <span class="tag">ROS 2</span>
+            <span class="tag">Object Detection</span>
+            <span class="tag">Mobile Robot</span>
+          </div>
+          <p class="project-links">
+            <a href="#">코드</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 : 메가북스 -->
+    <div class="project">
+      <div class="columns is-vcentered">
+        <div class="column is-5">
+          <img class="project-media" src="static/images/megabooks.jpg"
+               alt="메가북스 — 아이트래킹 기반 4D 독서 시스템">
+        </div>
+        <div class="column is-7">
+          <h3 class="project-title">메가북스 — 아이트래킹 기반 4D 독서</h3>
+          <!-- TODO: 기간, 팀 구성, 담당 역할로 교체 -->
+          <p class="project-meta">기간 · 팀 구성 · 담당 역할</p>
+          <!-- <p class="project-award">수상 내역</p> -->
+          <div class="project-body">
+            <p>
+              독자의 시선을 추적해 지금 읽고 있는 대목에 맞춰 효과를 재생하는 독서 시스템입니다.
+            </p>
+            <!-- TODO: 아래 항목을 실제 내용으로 교체 -->
+            <ul>
+              <li>시선 추적: 어떤 장비와 방식으로 응시 지점을 잡았는지</li>
+              <li>본문 매핑: 시선 좌표를 문장/문단 단위로 연결한 방법</li>
+              <li>4D 효과: 무엇을 어떻게 연동했는지 (조명, 진동, 음향 등)</li>
+            </ul>
+          </div>
+          <div class="tag-row tags">
+            <span class="tag">Eye Tracking</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">HCI</span>
+          </div>
+          <p class="project-links">
+            <a href="#">코드</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 : 청각 보조 헤드셋 -->
+    <div class="project">
+      <div class="columns is-vcentered">
+        <div class="column is-5">
+          <img class="project-media" src="static/images/headset.jpg"
+               alt="청각장애인용 헤드셋형 보조기기">
+        </div>
+        <div class="column is-7">
+          <h3 class="project-title">청각장애인을 위한 헤드셋형 보조기기</h3>
+          <!-- TODO: 기간, 팀 구성, 담당 역할로 교체 -->
+          <p class="project-meta">기간 · 팀 구성 · 담당 역할</p>
+          <!-- <p class="project-award">수상 내역</p> -->
+          <div class="project-body">
+            <p>
+              주변 소리를 감지해 착용자가 알아챌 수 있는 형태로 바꿔 전달하는
+              헤드셋형 기기입니다.
+            </p>
+            <!-- TODO: 아래 항목을 실제 내용으로 교체 -->
+            <ul>
+              <li>감지: 어떤 소리를 대상으로 했고 어떻게 분류했는지</li>
+              <li>전달: 방향과 종류를 어떤 방식으로 알렸는지 (진동, 시각 표시 등)</li>
+              <li>착용성: 하드웨어를 어떻게 설계했는지</li>
+            </ul>
+          </div>
+          <div class="tag-row tags">
+            <span class="tag">Embedded</span>
+            <span class="tag">Audio Processing</span>
+            <span class="tag">Accessibility</span>
+          </div>
+          <p class="project-links">
+            <a href="#">코드</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ 진행 중 ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">진행 중</h2>
+    <p class="section-note">아직 결과가 나오지 않았지만 지금 손대고 있는 것들입니다.</p>
+
+    <div class="columns">
+      <div class="column is-6 wip-item">
+        <img class="project-media" src="static/images/hwaetbuli.jpg" alt="횃불이 로봇 콘셉트">
+        <h3 class="project-title">횃불이 휴머노이드</h3>
+        <p class="project-meta">개인 프로젝트 · 플랫폼 선정 단계</p>
+        <div class="project-body">
+          <p>
+            인천대학교 마스코트 '횃불이'를 실제로 걷고 움직이는 휴머노이드 로봇으로
+            만들어 보는 프로젝트입니다. 오픈소스 휴머노이드 플랫폼을 조사하며
+            구동계와 제어 스택을 정하고 있습니다.
+          </p>
+        </div>
+        <div class="tag-row tags">
+          <span class="tag">Humanoid</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">Physical AI</span>
+        </div>
+      </div>
+
+      <div class="column is-6 wip-item">
+        <img class="project-media" src="static/images/fogapp.jpg" alt="FogApp 화면">
+        <h3 class="project-title">FogApp</h3>
+        <p class="project-meta">5인 팀 · 오픈소스 개발자대회 2026</p>
+        <div class="project-body">
+          <p>
+            가본 곳만 지도의 안개가 걷히는 방식의 국내 여행 탐험 앱입니다.
+            팀 프로젝트로 참여했습니다.
+          </p>
+        </div>
+        <div class="tag-row tags">
+          <span class="tag">Mobile App</span>
+          <span class="tag">Team Project</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ TEACHING ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">교육과 커뮤니티</h2>
+
+    <div class="columns is-multiline">
+      <div class="column is-6">
+        <h3 class="project-title is-size-5">코딩학당 — 부장</h3>
+        <p class="project-body">
+          코딩교육 봉사동아리에서 3년간 초등학생부터 고등학생까지를 대상으로 강사로 활동했습니다.
+          앱인벤터, 레고 스파이크 프라임, 컴퓨터비전, 파이썬 커리큘럼을 직접 편성하고
+          강의 자료와 실습 노트북까지 제작했습니다.
+        </p>
+      </div>
+      <div class="column is-6">
+        <h3 class="project-title is-size-5">교내 AI/SW 리더</h3>
+        <p class="project-body">
+          비전공자 구성원을 대상으로 생성형 AI 활용법을 안내하고,
+          실제 업무를 함께 처리해 주는 서포터즈로 활동하고 있습니다.
+        </p>
+      </div>
+      <div class="column is-6">
+        <h3 class="project-title is-size-5">ESC 드론 동아리</h3>
+        <p class="project-body">
+          Pixhawk 비행 제어 보드를 기반으로 드론을 직접 설계하고 제작했습니다.
+        </p>
+      </div>
+      <div class="column is-6">
+        <h3 class="project-title is-size-5">연구실 산학 협업</h3>
+        <p class="project-body">
+          양궁·골프 자세 분석 서비스의 개발 계획을 문서화하고,
+          연구실 반복 업무를 자동화하는 내부 도구를 개발하고 있습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ TIMELINE ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">이력</h2>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2026.09 ~ 현재</div>
+      <div class="timeline-body">
+        <strong>인천대학교 대학원 석사과정</strong><br>
+        인공지능응용시스템 연구실 · 학·석사 연계과정 연구장학생
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2023.03 – 2026.08</div>
+      <div class="timeline-body">
+        <strong>인천대학교 임베디드시스템공학과 학사</strong>
+      </div>
+    </div>
+
+    <!-- 수상이 3개 이상 쌓이면 아래 블록을 살리세요.
+         2개 이하라면 해당 프로젝트의 project-award 줄에 붙이는 쪽이 낫습니다. -->
+    <!--
+    <h2 class="section-heading mt-6">수상</h2>
+    <div class="timeline-item">
+      <div class="timeline-date">2026.00</div>
+      <div class="timeline-body"><strong>대회명 — 상 이름</strong><br>주최 기관 · 관련 프로젝트</div>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container is-max-desktop has-text-centered">
+    <p class="mb-3">
+      <a class="button is-rounded is-small" href="mailto:YOUR_EMAIL@inu.ac.kr">
+        <span class="icon"><i class="fas fa-envelope"></i></span>
+        <span>연락하기</span>
+      </a>
+    </p>
+    <p class="footer-note">
+      © 2026. 이 페이지는
+      <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> 템플릿 구조를 참고해 만들었습니다.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
