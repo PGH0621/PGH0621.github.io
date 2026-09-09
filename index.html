@@ -30,7 +30,10 @@
       font-family: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
       color: var(--ink);
       word-break: keep-all;   /* 한글 줄바꿈이 단어 중간에서 끊기지 않게 */
+      scroll-behavior: smooth;
     }
+
+    section[id] { scroll-margin-top: 2rem; }
 
     /* ---------- Hero ---------- */
     .hero-portfolio { padding: 5rem 1.5rem 3rem; }
@@ -61,6 +64,62 @@
     }
     .link-buttons .button:hover { background-color: var(--accent); color: #fff; }
     .link-buttons .button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    /* ---------- Section navigation ---------- */
+    .section-nav {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      width: 14rem;
+      box-sizing: border-box;
+      padding: 2.5rem 1.25rem;
+      background: #f4f6f8;
+      border-right: 1px solid var(--line);
+    }
+    .section-nav-profile {
+      margin: 0 0 3rem 0.5rem;
+    }
+    .section-nav-name {
+      color: var(--ink);
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+    .section-nav-description {
+      color: var(--muted);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+    }
+    .section-nav-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .section-nav a {
+      display: block;
+      border-left: 2px solid var(--line);
+      color: var(--muted);
+      font-size: 0.875rem;
+      padding: 0.45rem 0 0.45rem 0.75rem;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .section-nav a:hover,
+    .section-nav a:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    @media screen and (min-width: 1200px) {
+      body > section,
+      body > footer,
+      body > hr {
+        margin-left: 14rem;
+      }
+    }
 
     /* ---------- Section ---------- */
     .section-heading {
@@ -188,6 +247,34 @@
       .name-subtitle { font-size: 1.0625rem; }
       .timeline-item { flex-direction: column; gap: 0.25rem; }
       .timeline-date { flex: none; }
+      .section-nav {
+        position: sticky;
+        top: 0;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        overflow-x: auto;
+        padding: 0.6rem 1rem;
+        background: rgba(255, 255, 255, 0.96);
+        border-bottom: 1px solid var(--line);
+      }
+      .section-nav-profile { display: none; }
+      .section-nav-label { display: none; }
+      .section-nav a {
+        flex: 0 0 auto;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8125rem;
+      }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1199px) {
+      .section-nav { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -203,7 +290,7 @@
   <div class="container is-max-desktop has-text-centered">
     <!-- TODO: 실명으로 교체 -->
     <h1 class="name-title">박근호</h1>
-    <p class="name-subtitle">자율주행과 로봇을 물리 세계에 붙이는 일을 합니다</p>
+    <p class="name-subtitle">컴퓨터비전과 로봇 시스템을 공부하고 만듭니다</p>
     <p class="affiliation">
       인천대학교 정보기술대학 임베디드시스템공학과 · 인공지능응용시스템 연구실<br>
       석사과정 (2026.09 ~) · 지도교수 황광일
@@ -223,6 +310,19 @@
   </div>
 </section>
 
+<nav class="section-nav" aria-label="페이지 목차">
+  <div class="section-nav-profile">
+    <p class="section-nav-name">박근호</p>
+    <p class="section-nav-description">Computer Vision<br>and Robotics</p>
+  </div>
+  <p class="section-nav-label">CONTENTS</p>
+  <a href="#about">소개</a>
+  <a href="#projects">프로젝트</a>
+  <a href="#ongoing">진행 중</a>
+  <a href="#community">교육과 커뮤니티</a>
+  <a href="#experience">이력</a>
+</nav>
+
 <!-- ============ TEASER (대표 영상) ============ -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
@@ -239,7 +339,7 @@
 <hr class="divider">
 
 <!-- ============ ABOUT ============ -->
-<section class="section">
+<section id="about" class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">소개</h2>
     <div class="lead-text">
@@ -277,7 +377,7 @@
 <hr class="divider">
 
 <!-- ============ PROJECTS ============ -->
-<section class="section">
+<section id="projects" class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">프로젝트</h2>
 
@@ -429,7 +529,7 @@
 <hr class="divider">
 
 <!-- ============ 진행 중 ============ -->
-<section class="section">
+<section id="ongoing" class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">진행 중</h2>
     <p class="section-note">아직 결과가 나오지 않았지만 지금 손대고 있는 것들입니다.</p>
@@ -475,7 +575,7 @@
 <hr class="divider">
 
 <!-- ============ TEACHING ============ -->
-<section class="section">
+<section id="community" class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">교육과 커뮤니티</h2>
 
@@ -515,7 +615,7 @@
 <hr class="divider">
 
 <!-- ============ TIMELINE ============ -->
-<section class="section">
+<section id="experience" class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">이력</h2>
 
