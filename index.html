@@ -76,7 +76,7 @@
       box-sizing: border-box;
       padding: 2.5rem 1.25rem;
       background: #f4f6f8;
-      border-right: 1px solid var(--line);
+      border-right: 1px solid #cbd1d8;
     }
     .section-nav-profile {
       margin: 0 0 3rem 0.5rem;
@@ -145,7 +145,8 @@
     .teaser { padding: 0 1.5rem; }
     .teaser-media {
       display: block;
-      width: 100%;
+      width: 92%;
+      margin: 0 auto;
       border-radius: 8px;
       background: #000;
       aspect-ratio: 16 / 9;
@@ -165,6 +166,15 @@
       aspect-ratio: 4 / 3;
       object-fit: contain;   /* 세로 사진도 잘리지 않게 */
       padding: 0.5rem;
+      display: block;
+    }
+    .project-video {
+      width: 100%;
+      margin-top: 0;
+      border-radius: 6px;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
       display: block;
     }
     .project-title {
@@ -293,7 +303,7 @@
     <p class="name-subtitle">컴퓨터비전과 로봇 시스템을 공부하고 만듭니다</p>
     <p class="affiliation">
       인천대학교 정보기술대학 임베디드시스템공학과 · 인공지능응용시스템 연구실<br>
-      석사과정 (2026.09 ~) · 지도교수 황광일
+      석사과정 (2026.09 ~)
     </p>
 
     <div class="link-buttons">
@@ -456,8 +466,10 @@
     <div class="project">
       <div class="columns is-vcentered">
         <div class="column is-5">
-          <img class="project-media" src="static/images/megabooks.jpg"
-               alt="메가북스 — 아이트래킹 기반 4D 독서 시스템">
+          <video class="project-video" controls playsinline
+                 aria-label="메가북스 아이트래킹 기반 4D 독서 시스템 영상">
+            <source src="static/videos/%EB%A9%94%EA%B0%80%EB%B6%81%EC%8A%A4.mp4" type="video/mp4">
+          </video>
         </div>
         <div class="column is-7">
           <h3 class="project-title">메가북스 — 아이트래킹 기반 4D 독서</h3>
