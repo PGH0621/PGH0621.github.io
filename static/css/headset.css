@@ -1,0 +1,27 @@
+.headset-page .detail-container { max-width: 1240px; }
+.headset-page .headset-hero { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 2.5rem; margin-top: 2rem; }
+.headset-page .detail-hero { padding: 2rem 0; }
+.headset-page .compact-title { font-size: clamp(2rem,3vw,3rem); }
+.headset-page .headset-intro { max-width: 36rem; line-height: 1.9; margin-top: 1rem; color: #424b56; }
+.headset-page .headset-figure { margin: 1.4rem auto; width: 94%; max-width: 390px; }
+.headset-page .headset-figure img, .headset-page .headset-figure video { display: block; width: 100%; height: auto; border-radius: 6px; }
+.headset-page .headset-figure a { display: block; }
+.headset-page .headset-product { max-width: 280px; }
+.headset-page figcaption { padding: .65rem 0 0; font-size: .78rem; }
+.headset-page .headset-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 2.5rem; align-items: stretch; }
+.headset-page .headset-grid > * { min-width: 0; }
+.headset-page .article-section { padding: 2rem 0; }
+.headset-page .article-section h2 { font-size: 1.45rem; margin-bottom: 1rem; }
+.headset-page .article-section h3 { font-size: 1.08rem; margin-top: 1.5rem; }
+.headset-page .article-section p { color: #303943; line-height: 1.9; }
+.headset-page .article-section .eyebrow { font-size: .75rem; color: var(--accent); }
+.headset-page .headset-flow { list-style: decimal; padding-left: 1.5rem; }
+.headset-page .headset-flow li { padding: .9rem 0 .9rem .35rem; border-bottom: 1px solid var(--line); }
+.headset-page .headset-flow strong, .headset-page .headset-flow span { display: block; }
+.headset-page .headset-flow span { margin-top: .4rem; line-height: 1.8; color: #424b56; }
+.headset-page .source-note, .headset-page .headset-source { font-size: .85rem; color: #596370; margin-top: 1.25rem; line-height: 1.85; }
+.headset-page #hardware .headset-figure { max-width: 310px; }
+@media(max-width:1050px) {
+ .headset-page .headset-grid, .headset-page .headset-hero { grid-template-columns: minmax(0,1fr); }
+ .headset-page .headset-hero { gap: 0; }
+}

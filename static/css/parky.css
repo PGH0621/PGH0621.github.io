@@ -1,0 +1,45 @@
+/* PARKY only: keep other project pages on their existing layout. */
+.parky-page .detail-container { max-width: 1240px; }
+.parky-page .detail-main { padding-inline: 2.5rem; }
+.parky-page .parky-hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.5rem; align-items: center; margin: 2.5rem 0 1.5rem; }
+.parky-page .detail-hero { padding: 1rem 0; }
+.parky-page .detail-hero h1 { font-size: clamp(3rem, 5vw, 4.75rem); }
+.parky-page .detail-hero h1 span { font-size: 1.35rem; }
+.parky-page .detail-lead { font-size: 1rem; margin-top: 1rem; }
+.parky-page .desktop-break { display: none; }
+.parky-page .hero-figure { width: 100%; max-width: 410px; justify-self: center; margin: 0; background: transparent; }
+.parky-page .hero-figure img { width: 100%; height: auto; object-fit: initial; border-radius: 6px; }
+.parky-page .parky-photo-pair { display: grid; grid-template-columns: minmax(0, .73fr) minmax(0, 1.1fr); align-items: start; gap: 1rem; min-width: 0; width: 100%; max-width: 600px; justify-self: center; }
+.parky-page .parky-photo-pair .hero-figure { max-width: none; }
+.parky-page figcaption { padding: .65rem 0 0; font-size: .73rem; }
+.parky-page figcaption span { display: block; margin-bottom: .25rem; }
+.parky-page .parky-document-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; align-items: stretch; }
+.parky-page .parky-document-grid > * { min-width: 0; }
+.parky-page .article-section { padding: 2rem 0; }
+.parky-page .article-section h2 { font-size: 1.45rem; margin-bottom: 1rem; }
+.parky-page .article-section h3 { font-size: 1rem; margin-top: 1.5rem; }
+.parky-page .article-section p { font-size: .9rem; line-height: 1.85; }
+.parky-page .technical-heading { margin-top: 1.5rem; padding: 1.5rem; }
+.parky-page .optional-media { width: 92%; margin: 1.25rem auto; border: 0; border-radius: 0; background: transparent; }
+.parky-page .optional-media > a { display: block; }
+.parky-page .optional-media img { width: 100%; height: auto; border-radius: 4px; }
+.parky-page #hardware .optional-media { max-width: 350px; }
+.parky-page #navigation .optional-media { max-width: 480px; }
+.parky-page #keepout .optional-media { max-width: 520px; }
+.parky-page .table-scroll td, .parky-page .table-scroll th { min-width: 0; padding: .7rem .45rem; overflow-wrap: anywhere; }
+.parky-page .table-scroll table { font-size: .78rem; }
+.parky-page .callout { padding: 1rem; }
+.parky-page .article-section p { font-size: 1rem; line-height: 1.9; color: #303943; }
+.parky-page .article-section .eyebrow { font-size: .75rem; color: var(--accent); }
+.parky-page .article-section .source-link { font-size: .85rem; }
+.parky-page #references .poster-media { max-width: 350px; }
+@media (max-width: 1050px) {
+ .parky-page .parky-document-grid, .parky-page .parky-hero-grid { grid-template-columns: minmax(0, 1fr); }
+ .parky-page .detail-main { padding-inline: 1.5rem; }
+ .parky-page .hero-figure { max-width: 360px; }
+}
+@media (max-width: 768px) {
+ .parky-page .detail-main { padding-inline: 1.25rem; }
+ .parky-page .parky-hero-grid { margin-top: 1.5rem; gap: 1.5rem; }
+ .parky-page .optional-media { width: 95%; }
+}
