@@ -21,7 +21,30 @@
 .headset-page .headset-flow span { margin-top: .4rem; line-height: 1.8; color: #424b56; }
 .headset-page .source-note, .headset-page .headset-source { font-size: .85rem; color: #596370; margin-top: 1.25rem; line-height: 1.85; }
 .headset-page #hardware .headset-figure { max-width: 310px; }
+/* 하드웨어: 사진 옆 본문 — 본문 높이에 맞춰 사진이 위아래로 꽉 차도록 */
+.headset-page #hardware { container-type: inline-size; }
+.headset-page .hardware-item { --hw-photo: 34%; display: grid; grid-template-columns: minmax(0,var(--hw-photo)) minmax(0,1fr); grid-template-rows: auto auto; column-gap: 1.5rem; max-width: 620px; margin-top: 1.75rem; }
+/* 사진 비율과 본문 길이가 달라 행마다 사진 폭을 조정 */
+.headset-page .hardware-item + .hardware-item { --hw-photo: 42%; }
+.headset-page #hardware .hardware-item .headset-figure { grid-row: span 2; display: grid; grid-template-rows: subgrid; width: 100%; max-width: none; margin: 0; }
+.headset-page .hardware-item .headset-figure a { position: relative; min-height: 120px; overflow: hidden; border-radius: 6px; }
+.headset-page .hardware-item .headset-figure img { position: absolute; inset: 0; height: 100%; object-fit: cover; }
+.headset-page #hardware .hardware-text h3 { margin: -.2em 0 .6rem; line-height: 1.35; }
+.headset-page #hardware .hardware-text p { margin: 0 0 -.45em; }
 @media(max-width:1050px) {
  .headset-page .headset-grid, .headset-page .headset-hero { grid-template-columns: minmax(0,1fr); }
  .headset-page .headset-hero { gap: 0; }
+}
+@container (max-width: 560px) {
+ .headset-page #hardware .hardware-text p { font-size: .88rem; line-height: 1.75; }
+ .headset-page .hardware-item { --hw-photo: 36%; }
+ .headset-page .hardware-item + .hardware-item { --hw-photo: 40%; }
+}
+@container (max-width: 460px) {
+ .headset-page .hardware-item { grid-template-columns: minmax(0,1fr); }
+ .headset-page #hardware .hardware-item .headset-figure { grid-row: auto; display: block; max-width: 310px; margin: 0 auto 1rem; }
+ .headset-page .hardware-item .headset-figure a { min-height: 0; }
+ .headset-page .hardware-item .headset-figure img { position: static; height: auto; }
+ .headset-page #hardware .hardware-text h3 { margin-top: 0; }
+ .headset-page #hardware .hardware-text p { margin-bottom: 0; }
 }
