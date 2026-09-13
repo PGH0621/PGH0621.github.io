@@ -1,0 +1,65 @@
+.coding-page .detail-hero { padding-bottom: 2.25rem; }
+.coding-page .detail-hero .compact-title { font-size: clamp(2.5rem, 5vw, 4rem); }
+
+/* 핵심 수치 */
+.coding-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.coding-stats > div { padding: 1.5rem 1.25rem; border-left: 1px solid var(--line); }
+.coding-stats > div:first-child { border-left: 0; padding-left: 0; }
+.coding-stats dt { font-size: .75rem; color: var(--muted); margin-bottom: .55rem; }
+.coding-stats dd strong { display: block; color: var(--accent); font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.3; }
+.coding-stats dd span { display: block; margin-top: .35rem; font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+/* 01 운영 과정 */
+.coding-process { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 2rem 0 0; padding: 0; counter-reset: step; }
+.coding-process li { background: var(--tint); border-radius: 6px; padding: 1.1rem 1.2rem; counter-increment: step; }
+.coding-process li::before { content: "0" counter(step); display: block; color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .08em; margin-bottom: .5rem; }
+.coding-process strong { display: block; font-size: .95rem; }
+.coding-process span { display: block; margin-top: .35rem; font-size: .85rem; line-height: 1.7; color: #515966; }
+
+/* 02 역할 */
+.role-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem 1.5rem; margin-top: 2rem; }
+.role-grid > div { border-top: 2px solid var(--accent); padding-top: 1rem; }
+.coding-page .role-grid h3 { margin: 0 0 .45rem; font-size: 1rem; }
+.coding-page .role-grid p { margin: 0; font-size: .88rem; line-height: 1.75; }
+
+/* 03 커리큘럼 */
+.curriculum-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+.curriculum-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; padding: 1.6rem 1.5rem; background: #fff; }
+.coding-page .curriculum-card .card-number { margin: 0; color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .12em; }
+.coding-page .curriculum-card h3 { margin: .45rem 0 .5rem; font-size: 1.25rem; letter-spacing: -.02em; }
+.coding-page .curriculum-card .card-lead { margin: 0 0 1rem; color: #303943; font-size: .92rem; font-weight: 600; line-height: 1.7; }
+.curriculum-card ul { list-style: none; margin: 0; padding: 0; }
+.curriculum-card li { position: relative; padding-left: 1rem; color: #444b55; font-size: .88rem; line-height: 1.8; }
+.curriculum-card li + li { margin-top: .5rem; }
+.curriculum-card li::before { content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: 1.2rem; }
+.card-tags span { background: var(--tint); color: var(--accent); border-radius: 4px; padding: .25rem .55rem; font-size: .72rem; }
+
+/* 04 운영 방식 */
+.teaching-flow { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem; margin: 2rem 0 2.5rem; padding: 0; }
+.teaching-flow li { position: relative; border-radius: 6px; padding: 1.25rem; background: var(--accent); color: #fff; }
+.teaching-flow li + li::before { content: "→"; position: absolute; left: -1.6rem; top: 50%; transform: translateY(-50%); color: var(--accent); font-weight: 700; }
+.teaching-flow .step-label { display: block; margin-bottom: .4rem; font-size: .7rem; font-weight: 700; letter-spacing: .12em; opacity: .75; }
+.teaching-flow strong { color: #fff; font-size: 1rem; line-height: 1.5; }
+.principle-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.principle-list > div { border-top: 1px solid var(--line); padding-top: 1rem; }
+.coding-page .principle-list h3 { margin: 0 0 .5rem; font-size: 1rem; }
+.coding-page .principle-list p { margin: 0; font-size: .88rem; line-height: 1.8; }
+
+@media (max-width: 1000px) {
+  .role-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .curriculum-grid, .principle-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 768px) {
+  .coding-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .coding-stats > div, .coding-stats > div:first-child { border-left: 0; padding: 1.1rem 0; }
+  .coding-stats > div:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--line); }
+  .coding-stats > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .coding-process, .teaching-flow { grid-template-columns: minmax(0, 1fr); }
+  .teaching-flow { gap: 1.75rem; }
+  .teaching-flow li + li::before { content: "↓"; left: 50%; top: -1.5rem; transform: translateX(-50%); }
+  .curriculum-card { padding: 1.3rem 1.15rem; }
+}
+@media (max-width: 480px) {
+  .role-grid { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+}
