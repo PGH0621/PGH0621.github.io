@@ -37,6 +37,12 @@
 .home-page .lead-text .mt-4 { margin-top: 0 !important; }
 .home-page .project-placeholder { display: flex; align-items: center; justify-content: center; height: 250px; padding: 2rem; border-radius: 6px; background: var(--tint); color: var(--accent); text-align: center; font-weight: 600; line-height: 1.7; }
 .home-page #community .column, .home-page #ongoing .column { padding: 1.25rem; }
+.home-page .award-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.home-page .award-item { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.home-page .award-date { padding: .2rem .55rem; border-radius: 4px; background: var(--tint); color: var(--accent); font-size: .8125rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.home-page .award-title { margin: 0; color: #1f2933; font-size: 1rem; font-weight: 600; line-height: 1.6; }
+.home-page .award-role { padding: .15rem .65rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .8125rem; white-space: nowrap; }
+.home-page .award-role.is-lead { border-color: #b9cbe0; color: var(--accent); }
 @media(min-width:1200px) { .home-page .home-intro-grid { margin-left: 14rem; } }
 @media(min-width:769px) and (max-width:1199px) { .home-page .home-intro-grid { margin-left: 12rem; } }
 @media(max-width:1050px) {
@@ -49,4 +55,6 @@
  .home-page .project > .columns { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
  .home-page .project-media, .home-page .project-video { max-height: 280px; }
  .home-page .project-placeholder { height: 220px; }
+ .home-page .award-item { grid-template-columns: auto minmax(0,1fr); align-items: start; gap: .4rem .9rem; }
+ .home-page .award-role { grid-column: 2; justify-self: start; }
 }
