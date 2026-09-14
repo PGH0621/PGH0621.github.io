@@ -1,0 +1,67 @@
+.megabooks-page .detail-container { max-width: 1080px; }
+.mb-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: 2.5rem; }
+.megabooks-page .detail-hero { padding: 3.5rem 0 2.5rem; }
+.megabooks-page .detail-hero h1 { font-size: clamp(3rem, 5.5vw, 4.75rem); }
+
+/* 이미지 · 영상 */
+.mb-figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #f4f6f8; }
+.mb-figure > a { display: block; }
+.mb-figure img, .mb-figure video { display: block; width: 100%; height: auto; }
+.mb-figure-wide { margin: 2rem 0; }
+.mb-video { max-width: 760px; margin: 1.5rem 0 0; }
+.mb-video video { background: #111; }
+
+/* 02 시스템 구성 */
+.mb-pipeline { margin: 2rem 0; padding: 1.75rem 1.5rem; border: 1px solid var(--line); border-radius: 6px; background: #f7f9fc; }
+.mb-pipeline-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin: 0; padding: 0; list-style: none; }
+.mb-pipeline-steps li { position: relative; padding: 1rem; border: 1px solid #b9cbe0; border-radius: 6px; background: #fff; }
+.mb-pipeline-steps li + li::before { content: "→"; position: absolute; left: -1.45rem; top: 50%; transform: translateY(-50%); color: var(--accent); font-weight: 700; }
+.mb-pipeline-steps strong { display: block; font-size: .92rem; }
+.mb-pipeline-steps small { display: block; margin-top: .35rem; color: #515966; font-size: .78rem; line-height: 1.6; overflow-wrap: anywhere; }
+.mb-pipeline-steps li.is-core { border-color: var(--accent); background: var(--accent); color: #fff; }
+.mb-pipeline-steps li.is-core strong { color: #fff; }
+.mb-pipeline-steps li.is-core small { color: rgba(255, 255, 255, .82); }
+.mb-outputs { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed #b9cbe0; }
+.megabooks-page .mb-outputs-label { margin: 0 0 .75rem; color: var(--muted); font-size: .78rem; text-align: right; }
+.mb-outputs ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.mb-outputs li { padding: .85rem 1rem; border-radius: 6px; background: var(--tint); }
+.mb-outputs strong { display: block; color: var(--accent); font-size: .9rem; }
+.mb-outputs span { display: block; margin-top: .2rem; color: #515966; font-size: .8rem; }
+.mb-repo-status { display: inline-block; margin-left: .35rem; padding: .05rem .45rem; border-radius: 4px; background: var(--tint); color: var(--accent); font-size: .7rem; font-weight: 600; vertical-align: middle; }
+.mb-repo-status.is-private { background: #eef0f3; color: #596370; }
+
+/* 05 콘텐츠 제작 단계 */
+.mb-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin: 2rem 0 0; padding: 0; list-style: none; counter-reset: mbstep; }
+.mb-steps li { padding: 1.1rem; border-top: 2px solid var(--accent); background: var(--tint); counter-increment: mbstep; }
+.mb-steps li::before { content: "0" counter(mbstep); display: block; margin-bottom: .6rem; color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
+.mb-steps strong { display: block; margin-bottom: .4rem; font-size: .9rem; }
+.mb-steps span { color: #515966; font-size: .82rem; line-height: 1.7; }
+
+/* 06 서버 도메인 */
+.mb-domain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 .5rem; }
+.mb-domain-grid article { padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: 6px; }
+.megabooks-page .mb-domain-grid h3 { margin: 0 0 .4rem; font-size: .98rem; }
+.megabooks-page .mb-domain-grid p { margin: 0; font-size: .85rem; line-height: 1.7; }
+.megabooks-page .source-note { color: #596370; font-size: .85rem; line-height: 1.85; }
+
+@media (max-width: 1050px) {
+  .mb-hero { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .megabooks-page .detail-hero { padding-bottom: 2rem; }
+}
+@media (max-width: 900px) {
+  .mb-pipeline-steps { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .mb-pipeline-steps li + li::before { content: "↓"; left: 50%; top: -1.45rem; transform: translateX(-50%); }
+  .mb-steps, .mb-domain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .mb-pipeline { padding: 1.25rem 1rem; }
+  .megabooks-page .mb-outputs-label { text-align: left; }
+  .mb-outputs ul, .mb-steps, .mb-domain-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 담당 역할 */
+.megabooks-page .project-facts { grid-template-columns: 1fr 1.35fr 1.1fr 1.1fr; }
+.mb-role { margin: 1.25rem 0 1.5rem; }
+@media (max-width: 768px) {
+  .megabooks-page .project-facts { grid-template-columns: minmax(0, 1fr); }
+}
