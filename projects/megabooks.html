@@ -32,7 +32,7 @@
   <figure class="mb-figure"><a href="../static/images/megabooks_concept.jpg"><img src="../static/images/megabooks_concept.jpg" alt="메가북스 서비스 구성: 앱의 아이트래킹과 Control Box가 블루투스로 통신하고, 빔프로젝터·스피커·공기 분출로 책 내용을 출력" width="1400" height="788"></a><figcaption>서비스 구성 — 앱 · 빔프로젝터 · Control Box · 이미지를 누르면 원본 보기</figcaption></figure>
 </div>
 
-<dl class="project-facts"><div><dt>개발 기간</dt><dd>2024.02 – 2024.10</dd></div><div><dt>구성</dt><dd>Android 앱 · Spring Boot 서버 · Control Box</dd></div><div><dt>담당 역할</dt><dd>Control Box 하드웨어 제작</dd></div><div><dt>분야</dt><dd>아이트래킹 · HCI · 임베디드</dd></div></dl>
+<dl class="project-facts"><div><dt>개발 기간</dt><dd>2024.02 – 2024.10</dd></div><div><dt>구성</dt><dd>Android 앱 · Spring Boot 서버 · Control Box</dd></div><div><dt>담당 역할</dt><dd>Control Box 설계·제작 · 펌웨어</dd></div><div><dt>분야</dt><dd>아이트래킹 · HCI · 임베디드</dd></div></dl>
 
 <nav class="article-toc" aria-label="메가북스 문서 목차"><a href="#overview">프로젝트 개요</a><a href="#architecture">시스템 구성</a><a href="#gaze">시선에서 문장으로</a><a href="#output">4D 출력</a><a href="#content">콘텐츠 제작</a><a href="#server">서버</a><a href="#demo">시연</a><a href="#engineering">구현 노트</a></nav>
 
@@ -100,10 +100,9 @@
     <tr><td>청각</td><td>스피커</td><td>audio_url</td><td>문장 음향을 재생하고, 끝나면 시선 판정을 재개</td></tr>
     <tr><td>촉각</td><td>Control Box</td><td>is_air</td><td>공기 분출 문장이면 페어링된 Control Box에 Bluetooth 신호 전송</td></tr>
   </tbody></table></div>
-  <h3>Control Box — 박근호가 제작한 공기 분출 장치</h3>
-  <div class="callout mb-role"><strong>담당 역할 · Control Box 하드웨어 제작</strong><p>팀에서 박근호는 앱의 신호를 받아 공기를 분출하는 Control Box 하드웨어 제작을 맡았습니다. 분출부와 제어부, 스마트폰을 거치하는 하우징까지 앱과 함께 동작하는 실물 장치로 구성했습니다.</p></div>
-  <p>Control Box는 4D 읽기를 위해 팀이 자체 개발한 하드웨어입니다. 발표 자료에 따르면 내부에 아두이노 나노, 서보모터, CO2 카트리지를 넣고, 외부에는 스마트폰 거치대와 블루투스 연결 상태 확인 홀, 분출구를 두었습니다.</p>
-  <p>앱은 페어링된 기기 목록에서 Control Box를 골라 Bluetooth SPP(RFCOMM) 소켓으로 연결하고, 공기 분출 문장을 읽을 때 한 글자짜리 트리거 신호를 보냅니다. 서보모터로 CO2 카트리지를 작동시키는 펌웨어는 조직 저장소에 포함되어 있지 않아, 장치 내부 동작은 발표 자료 기준으로 설명했습니다.</p>
+  <h3>Control Box — 박근호가 설계·제작한 공기 분출 장치</h3>
+  <div class="callout mb-role"><strong>담당 역할 · Control Box 부품 선정부터 펌웨어까지</strong><p>팀에서 박근호는 앱의 신호를 받아 공기를 분출하는 Control Box를 전담했습니다. 부품 선정, 3D 프린팅으로 만든 하우징, 장치를 제어하는 펌웨어까지 모두 직접 만들었습니다.</p><ul class="mb-role-list"><li><strong>부품 선정</strong><span>아두이노 나노, 서보모터, CO2 카트리지로 제어부와 분출부 구성</span></li><li><strong>3D 프린팅</strong><span>스마트폰 거치대, 블루투스 연결 상태 확인 홀, 분출구를 갖춘 하우징 제작</span></li><li><strong>펌웨어</strong><span>앱의 Bluetooth 트리거 신호를 받아 서보모터로 CO2를 분출하도록 제어</span></li></ul></div>
+  <p>앱은 페어링된 기기 목록에서 Control Box를 골라 Bluetooth SPP(RFCOMM) 소켓으로 연결하고, 공기 분출 문장을 읽을 때 한 글자짜리 트리거 신호를 보냅니다. Control Box 펌웨어는 이 신호를 받으면 서보모터를 움직여 CO2를 분출구로 내보냅니다. 펌웨어 코드는 조직 저장소에 올라가 있지 않아 동작 구조 수준으로 설명했습니다.</p>
   <figure class="mb-figure mb-figure-wide"><a href="../static/images/megabooks_controlbox.jpg"><img src="../static/images/megabooks_controlbox.jpg" alt="Control Box 내부: 아두이노 나노, 서보모터, CO2 카트리지 / 외부: 서보모터, 블루투스 연결 상태 확인 홀, 기능성 분출구" width="1400" height="788" loading="lazy"></a><figcaption>Control Box 내부와 외부 구성 · 이미지를 누르면 원본 보기</figcaption></figure>
 </section>
 
@@ -156,7 +155,7 @@
     <article><h3>세로 좌표 기반의 줄 판정</h3><p>시선의 가로 좌표는 사용하지 않고, 세로 좌표가 문장 영역 상단부터 50px 안에 있는지로 줄을 구분합니다. 문장을 크게 띄운 세 줄 레이아웃에서는 단순하고 안정적이지만, 줄 간격이 좁거나 화면 크기가 다른 기기에서는 판정 범위와 카메라 위치 설정을 다시 맞춰야 합니다.</p></article>
     <article><h3>음향 재생과 반응 속도의 균형</h3><p>음향이 끝날 때까지 시선 판정을 멈추기 때문에 효과가 겹치지 않는 대신, 음향이 길면 다음 문장으로 눈을 옮겨도 반응이 늦어집니다. 문장 길이에 맞춘 음향 길이 조정이나 재생 중단 규칙이 개선 방향입니다.</p></article>
     <article><h3>단방향 트리거 통신</h3><p>앱은 Control Box에 공기 분출 여부만 알리는 한 글자 신호를 보내고 응답은 받지 않습니다. 효과 종류나 세기를 늘리려면 명령 형식을 정의하고 장치 상태를 확인하는 통신이 필요합니다.</p></article>
-    <article><h3>문서화 범위</h3><p>이 페이지의 코드 설명은 Server와 App 저장소를 기준으로 합니다. 관리자 페이지, AI 콘텐츠 생성, Control Box 펌웨어는 저장소에 없어 발표 자료로 설명했으며, 인식 정확도나 반응 지연 같은 측정 결과는 포함하지 않았습니다.</p></article>
+    <article><h3>문서화 범위</h3><p>이 페이지의 코드 설명은 Server와 App 저장소를 기준으로 합니다. 관리자 페이지와 AI 콘텐츠 생성은 저장소에 없어 발표 자료로, Control Box 펌웨어는 코드가 저장소에 없어 동작 구조로 설명했으며, 인식 정확도나 반응 지연 같은 측정 결과는 포함하지 않았습니다.</p></article>
   </div>
 </section>
 
