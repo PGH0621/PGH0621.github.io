@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RoboRacer 2026 · 박근호</title><meta name="description" content="RoboRacer 2026 프로젝트 소개">
-<meta property="og:title" content="RoboRacer 2026 · 박근호"><meta property="og:description" content="RoboRacer 2026 프로젝트 소개"><meta property="og:type" content="article">
+<title>RoboRacer 2026 · 박근호</title><meta name="description" content="팀 UNITA의 RoboRacer 2026 자율주행 레이싱 스택. Jetson Orin Nano 한 대에서 지도 작성, 레이스라인 최적화, 위치 추정, 장애물 인식과 회피까지 수행하는 ROS 2 시스템 기술 문서.">
+<meta property="og:title" content="RoboRacer 2026 · 박근호"><meta property="og:description" content="1/10 스케일 자율주행 레이싱 차량의 ROS 2 스택 — 하드웨어, 위치 추정, 레이스라인, 제어, 인식과 추월."><meta property="og:type" content="article">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../static/css/site.css"><link rel="stylesheet" href="../static/css/projects.css">
-</head><body class="detail-page"><a class="skip-link" href="#main">본문으로 건너뛰기</a><nav class="section-nav" aria-label="페이지 목차">
+<link rel="stylesheet" href="../static/css/roboracer.css">
+</head><body class="detail-page roboracer-page"><a class="skip-link" href="#main">본문으로 건너뛰기</a><nav class="section-nav" aria-label="페이지 목차">
   <div class="section-nav-profile"><p class="section-nav-name">박근호</p><p class="section-nav-description">Computer Vision<br>and Robotics</p></div>
   <p class="section-nav-label">CONTENTS</p>
   <a href="../index.html#about">소개</a>
@@ -19,14 +20,208 @@
 </nav>
 <main id="main" class="detail-main"><div class="detail-container">
 <div class="breadcrumb-line"><a href="../index.html#projects">프로젝트</a><span aria-hidden="true">/</span><span>RoboRacer 2026</span></div>
-<header class="detail-hero"><p class="eyebrow">PROJECT</p><h1 class="compact-title">RoboRacer 2026</h1></header><figure class="summary-figure"><img src="../static/images/roboracer.jpg" alt="RoboRacer 자율주행 차량"></figure><section class="article-section"><h2>프로젝트 개요</h2><div class="project-body">
-            <p>1/10 스케일 자율주행 차량의 동적 장애물 회피 파이프라인을 구축했습니다.</p>
-            <ul>
-              <li>기존 스플라인 플래너에 Frenet 좌표계 기반 플래닝을 통합해 추월 경로를 생성</li>
-              <li>상태 머신 파이프라인 디버깅 및 오버테이킹 섹터 설정</li>
-              <li>휠 엔코더 없이 ERPM 기반으로 VESC 캘리브레이션 (<code>erpm_calib</code> 패키지)</li>
-              <li>Jetson Orin Nano 온보드 배포 — 부트 루프를 전원 부족(brownout reset)으로 원인 규명</li>
-            </ul>
-          </div></section><section id="technical" class="article-section"><h2>기술 문서</h2><p>현재 프로젝트 개요를 공개하고 있습니다. 세부 구현과 기술 자료는 순차적으로 추가할 예정입니다.</p><a href="parky.html">PARKY 기술 문서 보기 →</a></section>
+
+<div class="rr-hero">
+  <header class="detail-hero">
+    <p class="eyebrow">AUTONOMOUS RACING / ROS 2</p>
+    <h1>RoboRacer 2026<span>팀 UNITA의 1/10 스케일 자율주행 레이싱 스택</span></h1>
+    <p class="detail-lead">지도를 만들고, 가장 빠른 선을 계산하고,<br class="desktop-break"> 앞의 장애물을 피해 달리는 과정을 차량 한 대의 Jetson에서.</p>
+    <div class="detail-tags"><span>ROS 2 Humble</span><span>Particle Filter</span><span>Min-curvature Raceline</span><span>Pure Pursuit</span><span>LiDAR Detection</span><span>Jetson Orin Nano</span></div>
+    <div class="detail-actions"><a class="primary-link" href="#technical">기술 문서 읽기 ↓</a><a href="https://github.com/hyunyoung1018/roboracer_unita_ws">GitHub 저장소 ↗</a></div>
+  </header>
+  <figure class="rr-hero-figure"><a href="../static/images/roboracer.jpg"><img src="../static/images/roboracer.jpg" alt="RoboRacer 2026 차량 — LiDAR와 온보드 컴퓨터를 얹은 1/10 스케일 자율주행 레이싱 카" width="599" height="695"></a><figcaption>팀 UNITA 레이싱 차량 — 위에 장착한 파란 직육면체가 바운딩 박스</figcaption></figure>
+</div>
+
+<dl class="project-facts rr-facts">
+  <div><dt>대회</dt><dd>제29회 RoboRacer Autonomous Racing Competition (IFAC 2026)</dd></div>
+  <div><dt>팀</dt><dd>UNITA</dd></div>
+  <div><dt>담당 역할</dt><dd>바운딩 박스 · 3D 마운트 제작, 파라미터 튜닝, VESC 캘리브레이션</dd></div>
+  <div><dt>플랫폼</dt><dd>Traxxas 1/10 · Jetson Orin Nano Super · ROS 2 Humble</dd></div>
+</dl>
+
+<nav class="article-toc" aria-label="RoboRacer 문서 목차"><a href="#overview">프로젝트 개요</a><a href="#role">담당 작업</a><a href="#hardware">하드웨어</a><a href="#pipeline">주행 파이프라인</a><a href="#localization">지도와 위치 추정</a><a href="#raceline">레이스라인</a><a href="#control">제어</a><a href="#perception">장애물 인식</a><a href="#overtake">회피와 추월</a><a href="#tools">운영 도구</a><a href="#engineering">구현 노트</a><a href="#references">영상과 자료</a></nav>
+
+<section id="overview" class="article-section">
+  <p class="eyebrow">01 / OVERVIEW</p>
+  <h2>연산 자원이 작은 차량에서 레이싱 스택 전체를</h2>
+  <p>RoboRacer(구 F1TENTH)는 1/10 스케일 차량으로 자율주행 레이스를 겨루는 대회입니다. 팀 UNITA는 ETH Zürich의 <a href="https://github.com/ForzaETH/race_stack">ForzaETH race_stack</a>을 기반으로, 다른 참가 팀 UNIST와 UNICORN의 제어기·상태 머신·차선 변경 플래너를 포팅해 대회용 스택을 구성했습니다.</p>
+  <p>이 스택은 레이스라인 생성까지 포함한 모든 과정을 차량의 Jetson Orin Nano Super에서 실행합니다. 저장소에는 2026년 7월 30일부터 8월 25일까지 316개의 커밋이 쌓였고, 트랙 지도와 속도 섹터, 실차 측정 값을 주석으로 남긴 설정 파일이 함께 관리됩니다.</p>
+  <div class="feature-grid">
+    <article><span class="feature-number">01</span><h3>지도와 레이스라인</h3><p>LiDAR로 트랙 지도를 만들고, 최소 곡률 최적화로 레이스라인과 속도 프로파일을 생성합니다.</p></article>
+    <article><span class="feature-number">02</span><h3>위치 추정과 제어</h3><p>파티클 필터와 EKF로 차량 위치를 추정하고, Pure Pursuit 제어기로 레이스라인을 따라갑니다.</p></article>
+    <article><span class="feature-number">03</span><h3>인식과 추월</h3><p>LiDAR로 장애물을 검출·추적하고, 상태 머신이 회피 경로와 추월 여부를 결정합니다.</p></article>
+  </div>
+</section>
+
+<section id="role" class="article-section">
+  <p class="eyebrow">02 / MY ROLE</p>
+  <h2>차량을 달릴 수 있는 상태로 만드는 일</h2>
+  <p>박근호는 팀에서 차량 하드웨어 제작과 실차 튜닝을 맡았습니다. 소프트웨어 스택이 실제 차량 위에서 의도대로 움직이도록 물리적인 부품을 만들고, 차량 특성에 맞춰 값을 맞추는 작업입니다.</p>
+  <div class="rr-role-grid">
+    <article><span class="rr-role-num">01</span><h3>바운딩 박스 제작</h3><p>상대 차량이 LiDAR로 우리 차량을 쉽게 감지하도록, 차량 위에 장착하는 직육면체 박스를 제작했습니다.</p></article>
+    <article><span class="rr-role-num">02</span><h3>3D 마운트 제작</h3><p>센서와 부품을 차량 섀시에 고정하는 마운트를 3D 프린팅으로 제작했습니다.</p></article>
+    <article><span class="rr-role-num">03</span><h3>파라미터 튜닝</h3><p>실차 주행 결과를 보며 제어기 lookahead, 섹터별 속도 배율, 인식·회피 임계값 등 주행 파라미터를 조정했습니다.</p></article>
+    <article><span class="rr-role-num">04</span><h3>VESC 캘리브레이션</h3><p>속도 명령을 모터 ERPM으로 바꾸는 계수와 서보 사용 범위를 이 차량에서 직접 측정해 보정했습니다.</p></article>
+  </div>
+  <div class="table-scroll"><table><caption>저장소 <code>vesc.yaml</code>에 반영된 캘리브레이션 값</caption><thead><tr><th>항목</th><th>값</th><th>의미</th></tr></thead><tbody>
+    <tr><td>speed_to_erpm_gain</td><td>4425.0 (offset 0)</td><td>속도 명령(m/s)을 모터 ERPM으로 변환하는 계수</td></tr>
+    <tr><td>steering_angle_to_servo_gain / offset</td><td>-1.1 / 0.445</td><td>조향 각(rad)을 서보 출력으로 변환, offset은 직진 중립점</td></tr>
+    <tr><td>servo_min / servo_max</td><td>0.12 / 0.77</td><td>실측한 서보 사용 범위 (기구적 한계 0.10 / 0.90)</td></tr>
+    <tr><td>ERPM 제한</td><td>±35,400</td><td>보정된 계수 기준 약 8 m/s에 해당하는 상한</td></tr>
+    <tr><td>brake_current_max</td><td>20 A</td><td>제동 전류 상한</td></tr>
+  </tbody></table></div>
+  <h3>측정으로 정한 값</h3>
+  <p>ForzaETH 설정에서 가져온 VESC 계수는 차량마다 달라 그대로 달리면 속도와 조향 각이 틀어집니다. 속도 계수는 일정 거리를 주행한 뒤 줄자로 잰 거리와 <code>/vesc/odom</code>의 이동 거리를 비교해 맞췄습니다. 서보 한계는 드라이버가 명령을 같은 한계로 잘라내 그대로는 찾을 수 없어, 한계를 연 상태에서 바퀴를 띄우고 중립 0.445부터 0.02씩 넓혀 바퀴가 따라오는 마지막 값을 기록했습니다. 보정한 속도 계수를 기준으로 ERPM 상한도 약 8 m/s에 해당하는 값으로 다시 설정했습니다.</p>
+  <p>제어기 설정 파일에는 실차 주행으로 조정한 흔적이 주석으로 남아 있습니다. lookahead 최솟값 <code>t_clip_min</code>은 0.7 · 1.0 · 1.2 · 1.4를 시험해 1.2로, 속도 비례 계수 <code>m_l1</code>은 0.47 · 0.67을 거쳐 0.62로 정했습니다.</p>
+  <p class="source-link"><a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/config/car/vesc.yaml">VESC 설정 ↗</a> · <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/config/car/controller.yaml">제어기 설정 ↗</a></p>
+</section>
+
+<div id="technical" class="technical-heading"><p class="eyebrow">TECHNICAL DOCUMENTATION</p><h2>센서 입력에서 모터 명령까지</h2><p><a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17">roboracer_unita_ws 커밋 c825fd8</a>의 코드·설정·README를 기준으로 정리했습니다.</p></div>
+
+<section id="hardware" class="article-section">
+  <p class="eyebrow">03 / HARDWARE</p>
+  <h2>1/10 섀시 위의 센서와 연산 장치</h2>
+  <div class="table-scroll"><table><caption>차량 구성</caption><thead><tr><th>구분</th><th>구성</th><th>비고</th></tr></thead><tbody>
+    <tr><td>섀시</td><td>Traxxas 1/10</td><td>휠베이스 0.324 m, 트랙 폭 0.235 m (URDF)</td></tr>
+    <tr><td>모터 제어</td><td>VESC 6 MkVI</td><td>내장 IMU를 yaw 추정에 사용 (-90° 장착)</td></tr>
+    <tr><td>LiDAR</td><td>Hokuyo UST-10LX</td><td>이더넷 연결, 차량 기준 x 0.259 m 위치</td></tr>
+    <tr><td>컴퓨터</td><td>Jetson Orin Nano Super</td><td>arm64, JetPack 6 / Ubuntu 22.04, ROS 2 Humble</td></tr>
+    <tr><td>조작 · 전원</td><td>Logitech F710 · 3S 8000 mAh LiPo</td><td>조이스틱으로 수동/자율 전환과 정지</td></tr>
+  </tbody></table></div>
+  <h3>하드웨어 문제를 소프트웨어에서 함께 다루기</h3>
+  <p>팀은 VESC 드라이버가 IMU 값을 g와 deg/s로 내보내던 문제를 m/s²와 rad/s로 바로잡고, 모터 드라이버에 50 A 상한의 전류 제동을 추가했습니다. LiDAR 연결이 끊기던 문제를 해결한 뒤에는 네트워크 상태를 확인하는 스크립트를 남겼습니다.</p>
+  <p>DDS 설정은 CycloneDDS로 바꾸고 사용할 네트워크 인터페이스를 지정했습니다. 설정 파일의 주석은 0.3초 멈춤의 원인이 DDS가 아니라 CPU 과부하였다고 기록하고 있어, 이후 연산량을 줄이는 작업으로 이어졌습니다.</p>
+</section>
+
+<section id="pipeline" class="article-section">
+  <p class="eyebrow">04 / PIPELINE</p>
+  <h2>지도 작성부터 주행까지 네 단계의 실행</h2>
+  <p>트랙에 도착하면 지도를 만들고, 그 지도에서 레이스라인을 생성한 뒤, 주행 모드를 실행합니다. 주행 중에는 위치 추정 결과를 기준으로 상태 머신이 경로를 고르고 제어기가 모터 명령을 냅니다.</p>
+  <ol class="rr-flow" aria-label="주행 파이프라인">
+    <li><strong>LiDAR · IMU</strong><small>/scan, VESC IMU·오도메트리</small></li>
+    <li><strong>위치 추정</strong><small>파티클 필터 + EKF</small></li>
+    <li><strong>인식</strong><small>장애물 검출 · 추적</small></li>
+    <li class="is-core"><strong>상태 머신</strong><small>레이스라인 · 추종 · 추월 결정</small></li>
+    <li><strong>제어</strong><small>Pure Pursuit (L1)</small></li>
+    <li><strong>VESC</strong><small>ERPM · 서보 출력</small></li>
+  </ol>
+  <div class="table-scroll"><table><caption>주요 실행 구성 (stack_master/launch)</caption><thead><tr><th>실행 파일</th><th>역할</th></tr></thead><tbody>
+    <tr><td>mapping.launch.xml</td><td>Cartographer로 트랙 지도 작성, 서비스 호출로 지도 저장</td></tr>
+    <tr><td>raceline_generator.launch.xml</td><td>RViz에서 출발선 방향을 지정하고 레이스라인·섹터 생성</td></tr>
+    <tr><td>time_trials.launch.xml</td><td>위치 추정·상태 머신·제어기 실행. <code>obstacles:=true</code>이면 검출·추적·회피 플래너 추가</td></tr>
+    <tr><td>head_to_head.launch.xml</td><td>상대 차량 추적, 궤적 예측, 차선 변경 플래너를 포함한 대결 모드</td></tr>
+  </tbody></table></div>
+  <div class="callout"><strong>조이스틱이 허락해야 움직입니다</strong><p>LB는 수동 조작, RB는 자율 제어에 권한을 넘기고 B는 정지입니다. 두 버튼을 모두 놓으면 마지막 명령을 반복하지 않고 0을 보내, 노드가 멈추더라도 차량이 정지하도록 했습니다.</p></div>
+</section>
+
+<section id="localization" class="article-section">
+  <p class="eyebrow">05 / MAPPING &amp; LOCALIZATION</p>
+  <h2>LiDAR 지도 위에서 위치 추정</h2>
+  <h3>Cartographer 2D 지도 작성</h3>
+  <p>IMU를 사용하는 Cartographer 2D로 지도를 만들고, 휠 오도메트리는 거리 정보로만 활용합니다. 매핑을 끝내면 지도 이미지와 메타데이터가 트랙 폴더에 저장되어 레이스라인 생성과 주행에서 함께 쓰입니다.</p>
+  <h3>파티클 필터와 EKF</h3>
+  <p>위치 추정은 range_libc 레이캐스팅을 사용하는 MIT/f1tenth 파티클 필터(MCL)입니다. 파티클 1,000개와 <code>pcddt</code> 레이캐스팅을 사용하고, 회전 속도는 VESC 자이로에서 받습니다. robot_localization EKF가 VESC 오도메트리, 파티클 필터 자세, IMU 각속도를 50 Hz로 융합해 <code>map → odom</code> 변환을 발행합니다.</p>
+  <p>주행이 길어지면 누적 오차를 줄이기 위해, 결승선을 지날 때 일정 랩마다 파티클 필터를 다시 초기화하는 relocalizer 노드를 추가했습니다.</p>
+  <p class="source-link"><a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/config/car/pf.yaml">파티클 필터 설정 ↗</a> · <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/config/car/ekf_pf.yaml">EKF 설정 ↗</a></p>
+</section>
+
+<section id="raceline" class="article-section">
+  <p class="eyebrow">06 / RACELINE</p>
+  <h2>최소 곡률 레이스라인과 섹터별 속도</h2>
+  <p>레이스라인은 TUM의 global_racetrajectory_optimization(ForzaETH 포크)으로 생성합니다. 주 레이스라인은 반복 이차계획법 기반의 최소 곡률 최적화(<code>mincurv_iqp</code>)로, 추월용 라인은 최단 경로 최적화로 계산합니다. 트랙 경계에서 유지할 안전 폭은 기본 0.7 m이며, 폭 0.9 m의 좁은 트랙에서는 0.45 m로 낮춥니다.</p>
+  <figure class="optional-media"><a href="../static/images/roboracer_raceline.png"><img src="../static/images/roboracer_raceline.png" alt="IFAC RoboRacer 트랙 SLAM 지도 위의 중심선과 최소 곡률 레이스라인, 속도에 따라 색으로 표시" width="1586" height="816" loading="lazy"></a><figcaption>IFAC RoboRacer 트랙 지도 위의 레이스라인 — 저장소의 지도와 웨이포인트로 그린 그림. 색은 속도 배율을 적용하기 전의 최적화 속도 · 이미지를 누르면 원본 보기</figcaption></figure>
+  <p>IFAC 트랙의 최소 곡률 레이스라인은 길이 약 41.8 m, 최적화 속도 3.7~10.8 m/s로 계산되었습니다. 실제 주행 속도는 코드가 아니라 트랙별 <code>speed_scaling.yaml</code>에서 웨이포인트 구간(섹터)마다 배율로 정합니다. 이 트랙의 저장된 설정은 전 구간 한 섹터에 배율 0.3입니다.</p>
+  <div class="callout"><strong>섹터 경계는 출발 위치에 묶여 있습니다</strong><p>섹터는 레이스라인 시작점 기준의 웨이포인트 번호 범위라서, 다른 출발 자세로 레이스라인을 다시 만들면 모든 경계가 이동합니다. 그래서 첫 생성 때 지정한 출발 자세를 저장해 재사용합니다.</p></div>
+</section>
+
+<section id="control" class="article-section">
+  <p class="eyebrow">07 / CONTROL</p>
+  <h2>속도에 따라 늘어나는 lookahead</h2>
+  <p>제어기는 UNIST에서 포팅한 L1(Pure Pursuit) 방식입니다. lookahead 거리를 속도에 비례해 늘리고 곡률이 큰 구간에서는 줄인 뒤, 최솟값과 최댓값 사이로 제한합니다. 조향 각은 휠베이스와 목표점 방향으로 계산합니다.</p>
+  <div class="rr-formula"><code>L1 = m_l1 · v − (곡률 항) + q_l1</code><code>L1 ∈ [max(t_clip_min, √2 · 횡방향 오차), t_clip_max]</code><code>δ = atan(2 · L · sin η / L1)</code></div>
+  <div class="table-scroll"><table><caption>제어기 주요 파라미터 (controller.yaml)</caption><thead><tr><th>파라미터</th><th>값</th><th>역할</th></tr></thead><tbody>
+    <tr><td>m_l1 / q_l1</td><td>0.62 / 0</td><td>속도에 대한 lookahead 기울기와 절편</td></tr>
+    <tr><td>t_clip_min / t_clip_max</td><td>1.2 / 8.0</td><td>lookahead 최소·최대 거리 (m)</td></tr>
+    <tr><td>speed_lookahead</td><td>0.25</td><td>속도 목표를 앞선 지점에서 읽는 시간</td></tr>
+    <tr><td>curvature_factor</td><td>0.145</td><td>곡률에 따른 lookahead 감소</td></tr>
+    <tr><td>trailing_gap</td><td>2.5</td><td>앞 차량 추종 시 유지 간격</td></tr>
+  </tbody></table></div>
+  <p>README는 한 랩의 대부분에서 lookahead가 <code>t_clip_min</code>에 붙어 있어 속도 배율을 바꾸면 이 값도 함께 조정해야 하며, 따로 두면 차량이 좌우로 흔들린다고 기록합니다. 그래서 섹터마다 <code>t_clip_min</code>을 속도 배율과 짝지어 둘 수 있게 했습니다. 경로를 따라갈 수 없는 상황을 위한 대비책으로 Follow-the-Gap(disparity extender) 제어기도 포함되어 있습니다.</p>
+</section>
+
+<section id="perception" class="article-section">
+  <p class="eyebrow">08 / PERCEPTION</p>
+  <h2>LiDAR 점을 장애물과 상대 차량으로</h2>
+  <ol class="flow-list">
+    <li><strong>군집화</strong><span>C++ 검출기가 적응형 breakpoint 방식으로 LiDAR 점을 군집으로 나눕니다.</span></li>
+    <li><strong>박스 맞춤</strong><span>군집마다 1° 간격 90개 각도로 L자 사각형을 맞춰 크기와 방향을 구합니다.</span></li>
+    <li><strong>트랙 위 판정</strong><span>침식한 지도 격자에서 점을 조회해 트랙 안의 물체만 남깁니다.</span></li>
+    <li><strong>추적과 분류</strong><span>Frenet 좌표에서 최근접 이웃으로 추적하고, 속도로 정적·동적을 구분합니다.</span></li>
+  </ol>
+  <div class="table-scroll"><table><caption>인식 주요 파라미터 (perception.yaml)</caption><thead><tr><th>파라미터</th><th>값</th></tr></thead><tbody>
+    <tr><td>검출 주기 · 시야각 · 최대 거리</td><td>20 Hz · 220° · 9 m</td></tr>
+    <tr><td>장애물 크기 범위 · 최소 점 수</td><td>0.20–0.60 m · 8점</td></tr>
+    <tr><td>레이스라인에서 최대 횡거리</td><td>0.90 m</td></tr>
+    <tr><td>추적 연결 거리 · 최대 누락 프레임</td><td>0.8 m · 40프레임</td></tr>
+    <tr><td>정적 판정 속도</td><td>0.15 m/s</td></tr>
+  </tbody></table></div>
+  <p>대회 차량은 LiDAR에 잘 잡히도록 직육면체 바운딩 박스를 장착하므로, 박스의 평평한 면이 만드는 L자 윤곽이 상대 차량을 검출하는 단서가 됩니다. 대결 모드에서는 상대 차량을 속도가 아닌 일정 시간 동안의 순이동 거리로 식별합니다. 위치 추정 보정으로 생긴 겉보기 이동을 상대의 움직임으로 오인하지 않도록, 1초 동안 0.85 m 이상 움직인 물체를 상대로 잡습니다. 이 기준을 정하기 위해 정지 장애물 위치의 흔들림을 측정하는 도구도 만들었습니다.</p>
+  <p class="source-link"><a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/perception/src/detect.cpp">검출기 코드 ↗</a> · <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/config/car/perception.yaml">인식·회피 설정 ↗</a></p>
+</section>
+
+<section id="overtake" class="article-section">
+  <p class="eyebrow">09 / AVOIDANCE &amp; OVERTAKING</p>
+  <h2>레이스라인이 막혔을 때의 선택</h2>
+  <h3>상태 머신</h3>
+  <p>상태 머신은 50 Hz로 레이스라인 주행(RACELINE), 복귀(RECOVERY), 추종(TRAILING), 추월(OVERTAKE), Follow-the-Gap(FTGONLY) 등의 상태를 전환합니다. 앞길이 비어 있으면 레이스라인을 달리고, 막혀 있으면 회피 경로가 안전한지 확인해 추월하거나 앞 물체를 따라갑니다. 추종 상태에서 3초 이상 0.5 m/s 미만으로 느려지면 Follow-the-Gap으로 넘어갑니다.</p>
+  <div class="rr-state-row" aria-label="주요 상태">
+    <span class="is-main">RACELINE</span><span>RECOVERY</span><span>TRAILING</span><span class="is-accent">OVERTAKE</span><span>FTGONLY</span>
+  </div>
+  <h3>정적 장애물 회피 — Frenet 스플라인</h3>
+  <p>장애물을 레이스라인 기준의 Frenet 좌표(진행 거리 s, 횡방향 거리 d)로 바꾸고, 가까운 장애물은 하나의 통로로 묶어 같은 횡방향 오프셋으로 지나갑니다. 트랙 경계까지 남은 공간으로 좌우를 고르고, 차량의 현재 위치에서 출발해 접근·유지·복귀 구간의 매듭점을 잇는 3차 스플라인 d(s)를 만든 뒤 지도 좌표로 변환합니다.</p>
+  <h3>동적 추월 — 차선 변경과 궤적 예측</h3>
+  <p>대결 모드에서는 상대 차량의 앞으로 3 m 구간 궤적을 예측하고, 상대의 가장자리에서 차량 폭의 절반과 안전 여유 0.10 m를 더한 횡방향 위치로 raised-cosine 형태의 차선 변경 경로를 만듭니다. 경로는 침식한 지도 격자로 충돌을 검사하고 부드럽게 다듬습니다. 가우시안 프로세스 궤적 학습도 포함되어 있지만 Orin Nano에서 부담이 커 기본값은 등속 예측입니다.</p>
+  <div class="callout"><strong>추월 섹터와 추월 방향은 지도에 기록합니다</strong><p>트랙별 <code>ot_sectors.yaml</code>이 추월을 허용할 웨이포인트 구간, 선호하는 추월 방향, 직선 구간에서 추월 시 속도를 올리는 배율을 정합니다. 동적 추월은 추월 섹터 안에서만 시작하고, 정적 장애물 회피는 섹터와 관계없이 동작합니다.</p></div>
+</section>
+
+<section id="tools" class="article-section">
+  <p class="eyebrow">10 / TOOLING</p>
+  <h2>트랙 현장에서 쓰는 도구</h2>
+  <div class="rr-tool-grid">
+    <article><h3>preflight.py</h3><p>ROS나 빌드 없이 패키지 의존성 순환, 런치 인자 누락, 파라미터 키 오타, YAML·XML 파싱 오류를 미리 검사합니다.</p></article>
+    <article><h3>sector_tuner</h3><p>속도 섹터와 추월 섹터를 GUI로 조정하고, 배율을 적용한 웨이포인트를 발행합니다.</p></article>
+    <article><h3>raceline_tuner</h3><p>UNICORN에서 포팅한 도구로, 레이스라인을 처음부터 다시 만들지 않고 부분 수정합니다.</p></article>
+    <article><h3>lap_analyser · 예선 도구</h3><p>랩 타임과 횡방향 오차를 기록하고, 첫 랩은 느리게 이후 빠르게 달리는 예선 스케줄러와 RViz 표시를 제공합니다.</p></article>
+    <article><h3>straight_test</h3><p>지도 없이 직선 주행을 실행해 조향 중립과 직진 편차를 확인합니다.</p></article>
+    <article><h3>measure_jitter.py</h3><p>추적 중인 물체의 위치 흔들림과 이동량을 측정해, 콘과 느린 차량을 구분하는 기준을 정합니다.</p></article>
+  </div>
+</section>
+
+<section id="engineering" class="article-section">
+  <p class="eyebrow">11 / ENGINEERING NOTES</p>
+  <h2>실차에서 부딪힌 문제들</h2>
+  <div class="engineering-list">
+    <article><h3>arm64 Jetson의 파이썬 의존성</h3><p>apt로 설치한 skimage·OpenCV는 numpy 1.x 기준으로 빌드되어 있어, 가상환경에 numpy 2가 들어오면 import 단계에서 모두 깨집니다. numpy·numba 버전을 고정하고, 시뮬레이터와 최적화기는 <code>--no-deps</code>로 설치하며, 빌드는 가상환경의 인터프리터를 쓰도록 <code>python -m colcon build</code>로 실행합니다.</p></article>
+    <article><h3>CPU 예산이 곧 주행 성능</h3><p>차량에서 편집기 서버를 띄우면 약 2.5 GB 메모리와 CPU를 차지해 파티클 필터가 굶습니다. 팀은 상태 머신의 틱당 연산을 줄이고, 시각화 마커 발행을 줄이고, 무거운 GP 학습은 기본으로 끄는 방식으로 연산을 확보했습니다.</p></article>
+    <article><h3>하나의 거리, 세 개의 이름</h3><p>회피를 시작할 거리가 플래너·상태 머신·레이스라인 검사에서 서로 다른 파라미터로 표현됩니다. 세 값이 어긋나면 지나갈 수 있는 장애물 뒤를 따라가기만 하므로, 튜닝할 때 함께 맞춰야 합니다.</p></article>
+    <article><h3>남은 과제</h3><p>README는 상태 머신 루프를 아직 프로파일링하지 못했고, 정적 장애물 회피가 경로를 계획하고도 안전 검사에서 거절되어 실제로 진입하는 경우가 드물다고 기록합니다.</p></article>
+  </div>
+</section>
+
+<section id="references" class="article-section">
+  <p class="eyebrow">12 / MEDIA &amp; REFERENCES</p>
+  <h2>주행 영상과 소스 코드</h2>
+  <figure class="optional-media rr-video"><video controls muted playsinline preload="metadata" poster="../static/images/roboracer_poster.jpg" aria-label="RoboRacer 차량 주행 테스트 영상"><source src="../static/videos/roboracer.mp4" type="video/mp4"></video><figcaption>RoboRacer 차량 주행 테스트</figcaption></figure>
+  <p>기술 내용은 <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17">roboracer_unita_ws 커밋 c825fd8</a>을 기준으로 정리했습니다. 파티클 필터, VESC 드라이버, 레이스라인 최적화기, Frenet 변환 등은 ForzaETH·f1tenth·TUM의 공개 코드를 기반으로 하며, 제어기와 상태 머신은 UNIST, 차선 변경 플래너와 궤적 예측·레이스라인 튜너는 UNICORN의 코드를 포팅했습니다.</p>
+  <div class="reference-grid">
+    <a href="https://github.com/hyunyoung1018/roboracer_unita_ws">팀 저장소 ↗</a>
+    <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/launch">실행 구성 ↗</a>
+    <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17/src/state_machine">상태 머신 ↗</a>
+    <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17/src/planner">플래너 ↗</a>
+    <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/tools/preflight.py">preflight 검사 ↗</a>
+    <a href="https://github.com/ForzaETH/race_stack">ForzaETH race_stack ↗</a>
+  </div>
+</section>
+
 <footer class="detail-footer"><a href="../index.html#projects">← 모든 프로젝트</a><span>박근호 · Computer Vision &amp; Robotics</span></footer>
 </div></main><script src="../static/js/project-media.js" defer></script></body></html>
