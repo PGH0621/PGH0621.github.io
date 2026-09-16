@@ -4,8 +4,8 @@
 <meta property="og:title" content="메가북스 — 아이트래킹 기반 4D 독서 · 박근호"><meta property="og:description" content="아이트래킹 Android 앱, Spring Boot 서버, 자체 제작 Control Box로 구성한 4D 독서 서비스 메가북스."><meta property="og:type" content="article">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="../static/css/site.css"><link rel="stylesheet" href="../static/css/projects.css">
-<link rel="stylesheet" href="../static/css/megabooks.css">
+<link rel="stylesheet" href="../static/css/site.css?v=20260915"><link rel="stylesheet" href="../static/css/projects.css?v=20260915">
+<link rel="stylesheet" href="../static/css/megabooks.css?v=20260915">
 </head><body class="detail-page megabooks-page"><a class="skip-link" href="#main">본문으로 건너뛰기</a><nav class="section-nav" aria-label="페이지 목차">
   <div class="section-nav-profile"><p class="section-nav-name">박근호</p><p class="section-nav-description">Computer Vision<br>and Robotics</p></div>
   <p class="section-nav-label">CONTENTS</p>
@@ -39,7 +39,7 @@
 <section id="overview" class="article-section">
   <p class="eyebrow">01 / OVERVIEW</p>
   <h2>짧은 영상에 익숙한 아이들이 책에 머물도록</h2>
-  <p>팀은 교사 대상 설문 자료를 근거로, 숏폼 콘텐츠 소비와 독서량 감소가 청소년 문해력 저하의 주요 원인으로 꼽힌다는 점에 주목했습니다. 문해력의 기반이 되는 독서 습관은 유년기에 형성되므로, 아이들이 책에 흥미를 느낄 수 있도록 여러 감각을 자극하는 독서 경험을 목표로 삼았습니다.</p>
+  <p>교사 대상 설문에서 숏폼 콘텐츠 소비와 독서량 감소가 청소년 문해력 저하의 주요 원인으로 꼽혔습니다. 독서 습관은 유년기에 자리 잡는 만큼, 아이들이 책에 흥미를 느끼도록 여러 감각을 자극하는 독서 경험을 만들기로 했습니다.</p>
   <p>메가북스는 앱에 내장한 아이트래킹으로 사용자가 지금 읽고 있는 문장을 파악하고, 그 문장에 맞는 이미지와 음향을 재생하며, 자체 제작한 Control Box로 공기를 분출합니다. 전래동화를 첫 콘텐츠로 구성했습니다.</p>
   <div class="feature-grid">
     <article><span class="feature-number">01</span><h3>시선 추적</h3><p>스마트폰 전면 카메라로 시선 좌표를 얻고, 화면에 표시된 문장 중 어느 줄을 읽고 있는지 판정합니다.</p></article>
@@ -48,7 +48,7 @@
   </div>
 </section>
 
-<div id="technical" class="technical-heading"><p class="eyebrow">TECHNICAL DOCUMENTATION</p><h2>문장 데이터에서 시선 반응 출력까지</h2><p>MegaBooks 조직의 Server·App 저장소 코드와 팀 발표 자료를 바탕으로 정리했습니다.</p></div>
+<div id="technical" class="technical-heading"><p class="eyebrow">TECHNICAL DOCUMENTATION</p><h2>문장 데이터에서 시선 반응 출력까지</h2><p>문장 데이터가 만들어져 앱에서 4D로 출력되기까지의 구조입니다.</p></div>
 
 <section id="architecture" class="article-section">
   <p class="eyebrow">02 / ARCHITECTURE</p>
@@ -100,9 +100,9 @@
     <tr><td>청각</td><td>스피커</td><td>audio_url</td><td>문장 음향을 재생하고, 끝나면 시선 판정을 재개</td></tr>
     <tr><td>촉각</td><td>Control Box</td><td>is_air</td><td>공기 분출 문장이면 페어링된 Control Box에 Bluetooth 신호 전송</td></tr>
   </tbody></table></div>
-  <h3>Control Box — 박근호가 설계·제작한 공기 분출 장치</h3>
-  <div class="callout mb-role"><strong>담당 역할 · Control Box 부품 선정부터 펌웨어까지</strong><p>팀에서 박근호는 앱의 신호를 받아 공기를 분출하는 Control Box를 전담했습니다. 부품 선정, 3D 프린팅으로 만든 하우징, 장치를 제어하는 펌웨어까지 모두 직접 만들었습니다.</p><ul class="mb-role-list"><li><strong>부품 선정</strong><span>아두이노 나노, 서보모터, CO2 카트리지로 제어부와 분출부 구성</span></li><li><strong>3D 프린팅</strong><span>스마트폰 거치대, 블루투스 연결 상태 확인 홀, 분출구를 갖춘 하우징 제작</span></li><li><strong>펌웨어</strong><span>앱의 Bluetooth 트리거 신호를 받아 서보모터로 CO2를 분출하도록 제어</span></li></ul></div>
-  <p>앱은 페어링된 기기 목록에서 Control Box를 골라 Bluetooth SPP(RFCOMM) 소켓으로 연결하고, 공기 분출 문장을 읽을 때 한 글자짜리 트리거 신호를 보냅니다. Control Box 펌웨어는 이 신호를 받으면 서보모터를 움직여 CO2를 분출구로 내보냅니다. 펌웨어 코드는 조직 저장소에 올라가 있지 않아 동작 구조 수준으로 설명했습니다.</p>
+  <h3>Control Box — 직접 설계·제작한 공기 분출 장치</h3>
+  <div class="callout mb-role"><strong>담당 역할 · Control Box 부품 선정부터 펌웨어까지</strong><p>앱의 신호를 받아 공기를 분출하는 Control Box를 전담했습니다. 부품 선정, 3D 프린팅으로 만든 하우징, 장치를 제어하는 펌웨어까지 모두 직접 만들었습니다.</p><ul class="mb-role-list"><li><strong>부품 선정</strong><span>아두이노 나노, 서보모터, CO2 카트리지로 제어부와 분출부 구성</span></li><li><strong>3D 프린팅</strong><span>스마트폰 거치대, 블루투스 연결 상태 확인 홀, 분출구를 갖춘 하우징 제작</span></li><li><strong>펌웨어</strong><span>앱의 Bluetooth 트리거 신호를 받아 서보모터로 CO2를 분출하도록 제어</span></li></ul></div>
+  <p>앱은 페어링된 기기 목록에서 Control Box를 골라 Bluetooth SPP(RFCOMM) 소켓으로 연결하고, 공기 분출 문장을 읽을 때 한 글자짜리 트리거 신호를 보냅니다. Control Box 펌웨어는 이 신호를 받으면 서보모터를 움직여 CO2를 분출구로 내보냅니다.</p>
   <figure class="mb-figure mb-figure-wide"><a href="../static/images/megabooks_controlbox.jpg"><img src="../static/images/megabooks_controlbox.jpg" alt="Control Box 내부: 아두이노 나노, 서보모터, CO2 카트리지 / 외부: 서보모터, 블루투스 연결 상태 확인 홀, 기능성 분출구" width="1400" height="788" loading="lazy"></a><figcaption>Control Box 내부와 외부 구성 · 이미지를 누르면 원본 보기</figcaption></figure>
 </section>
 
@@ -118,7 +118,7 @@
   </ol>
   <figure class="mb-figure mb-figure-wide"><a href="../static/images/megabooks_admin.jpg"><img src="../static/images/megabooks_admin.jpg" alt="메가북스 관리자 페이지: 책 추가 화면과 책 내용 추가 및 요약, 4D책 생성하기 버튼" width="1400" height="772" loading="lazy"></a><figcaption>관리자 페이지 — 책 추가, 내용 요약과 4D 출력 요소 생성 · 이미지를 누르면 원본 보기</figcaption></figure>
   <p>서버는 Firebase Realtime Database의 <code>output_data/{책 제목}</code> 아래 문장 노드를 순서대로 읽어 <code>sentence</code>, <code>image_url</code>, <code>audio_url</code>, <code>is_air</code>를 목록으로 반환합니다.</p>
-  <p class="source-note">관리자 페이지와 AI 생성 코드는 조직 저장소에 없습니다(AI 저장소는 README만 존재). 이 절의 제작 과정은 발표 자료를, 데이터 구조는 Server 코드를 기준으로 정리했습니다.</p>
+  <p class="source-note">관리자 페이지와 AI 생성 코드는 팀 저장소에 남아 있지 않아, 제작 과정은 발표 자료를 기준으로 적었습니다.</p>
   <p class="source-link"><a href="https://github.com/MegaBooks/Server/blob/HEAD/src/main/java/megabooks/megabooks/global/firebase/service/FirebaseServiceImpl.java">문장 콘텐츠 조회 코드 ↗</a></p>
 </section>
 
@@ -155,9 +155,9 @@
     <article><h3>세로 좌표 기반의 줄 판정</h3><p>시선의 가로 좌표는 사용하지 않고, 세로 좌표가 문장 영역 상단부터 50px 안에 있는지로 줄을 구분합니다. 문장을 크게 띄운 세 줄 레이아웃에서는 단순하고 안정적이지만, 줄 간격이 좁거나 화면 크기가 다른 기기에서는 판정 범위와 카메라 위치 설정을 다시 맞춰야 합니다.</p></article>
     <article><h3>음향 재생과 반응 속도의 균형</h3><p>음향이 끝날 때까지 시선 판정을 멈추기 때문에 효과가 겹치지 않는 대신, 음향이 길면 다음 문장으로 눈을 옮겨도 반응이 늦어집니다. 문장 길이에 맞춘 음향 길이 조정이나 재생 중단 규칙이 개선 방향입니다.</p></article>
     <article><h3>단방향 트리거 통신</h3><p>앱은 Control Box에 공기 분출 여부만 알리는 한 글자 신호를 보내고 응답은 받지 않습니다. 효과 종류나 세기를 늘리려면 명령 형식을 정의하고 장치 상태를 확인하는 통신이 필요합니다.</p></article>
-    <article><h3>문서화 범위</h3><p>이 페이지의 코드 설명은 Server와 App 저장소를 기준으로 합니다. 관리자 페이지와 AI 콘텐츠 생성은 저장소에 없어 발표 자료로, Control Box 펌웨어는 코드가 저장소에 없어 동작 구조로 설명했으며, 인식 정확도나 반응 지연 같은 측정 결과는 포함하지 않았습니다.</p></article>
+    <article><h3>남아 있는 기록</h3><p>코드가 남은 부분은 서버와 앱입니다. 관리자 페이지와 AI 콘텐츠 생성, Control Box 펌웨어는 저장소에 없어 발표 자료로만 남았고, 인식 정확도나 반응 지연은 따로 측정하지 못했습니다.</p></article>
   </div>
 </section>
 
 <footer class="detail-footer"><a href="../index.html#projects">← 모든 프로젝트</a><span>박근호 · Computer Vision &amp; Robotics</span></footer>
-</div></main><script src="../static/js/project-media.js" defer></script></body></html>
+</div></main><script src="../static/js/project-media.js?v=20260915" defer></script></body></html>

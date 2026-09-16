@@ -4,8 +4,8 @@
 <meta property="og:title" content="RoboRacer 2026 · 박근호"><meta property="og:description" content="1/10 스케일 자율주행 레이싱 차량의 ROS 2 스택 — 하드웨어, 위치 추정, 레이스라인, 제어, 인식과 추월."><meta property="og:type" content="article">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="../static/css/site.css"><link rel="stylesheet" href="../static/css/projects.css">
-<link rel="stylesheet" href="../static/css/roboracer.css">
+<link rel="stylesheet" href="../static/css/site.css?v=20260915"><link rel="stylesheet" href="../static/css/projects.css?v=20260915">
+<link rel="stylesheet" href="../static/css/roboracer.css?v=20260915">
 </head><body class="detail-page roboracer-page"><a class="skip-link" href="#main">본문으로 건너뛰기</a><nav class="section-nav" aria-label="페이지 목차">
   <div class="section-nav-profile"><p class="section-nav-name">박근호</p><p class="section-nav-description">Computer Vision<br>and Robotics</p></div>
   <p class="section-nav-label">CONTENTS</p>
@@ -45,7 +45,7 @@
   <p class="eyebrow">01 / OVERVIEW</p>
   <h2>연산 자원이 작은 차량에서 레이싱 스택 전체를</h2>
   <p>RoboRacer(구 F1TENTH)는 1/10 스케일 차량으로 자율주행 레이스를 겨루는 대회입니다. 팀 UNITA는 ETH Zürich의 <a href="https://github.com/ForzaETH/race_stack">ForzaETH race_stack</a>을 기반으로, 다른 참가 팀 UNIST와 UNICORN의 제어기·상태 머신·차선 변경 플래너를 포팅해 대회용 스택을 구성했습니다.</p>
-  <p>이 스택은 레이스라인 생성까지 포함한 모든 과정을 차량의 Jetson Orin Nano Super에서 실행합니다. 저장소에는 2026년 7월 30일부터 8월 25일까지 316개의 커밋이 쌓였고, 트랙 지도와 속도 섹터, 실차 측정 값을 주석으로 남긴 설정 파일이 함께 관리됩니다.</p>
+  <p>이 스택은 레이스라인 생성까지 포함한 모든 과정을 차량의 Jetson Orin Nano Super에서 실행합니다. 대회를 준비한 2026년 7월 말부터 8월 말까지 316개의 커밋을 쌓았고, 트랙 지도와 속도 섹터, 실차에서 잰 값을 설정 파일에 함께 남겼습니다.</p>
   <div class="feature-grid">
     <article><span class="feature-number">01</span><h3>지도와 레이스라인</h3><p>LiDAR로 트랙 지도를 만들고, 최소 곡률 최적화로 레이스라인과 속도 프로파일을 생성합니다.</p></article>
     <article><span class="feature-number">02</span><h3>위치 추정과 제어</h3><p>파티클 필터와 EKF로 차량 위치를 추정하고, Pure Pursuit 제어기로 레이스라인을 따라갑니다.</p></article>
@@ -56,7 +56,7 @@
 <section id="role" class="article-section">
   <p class="eyebrow">02 / MY ROLE</p>
   <h2>차량을 달릴 수 있는 상태로 만드는 일</h2>
-  <p>박근호는 팀에서 차량 하드웨어 제작과 실차 튜닝을 맡았습니다. 소프트웨어 스택이 실제 차량 위에서 의도대로 움직이도록 물리적인 부품을 만들고, 차량 특성에 맞춰 값을 맞추는 작업입니다.</p>
+  <p>팀에서 차량 하드웨어 제작과 실차 튜닝을 맡았습니다. 소프트웨어 스택이 실제 차량 위에서 의도대로 움직이도록 부품을 만들고, 차량 특성에 맞춰 값을 맞추는 일입니다.</p>
   <div class="rr-role-grid">
     <article><span class="rr-role-num">01</span><h3>바운딩 박스 제작</h3><p>상대 차량이 LiDAR로 우리 차량을 쉽게 감지하도록, 차량 위에 장착하는 직육면체 박스를 제작했습니다.</p></article>
     <article><span class="rr-role-num">02</span><h3>3D 마운트 제작</h3><p>센서와 부품을 차량 섀시에 고정하는 마운트를 3D 프린팅으로 제작했습니다.</p></article>
@@ -76,7 +76,7 @@
   <p class="source-link"><a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/config/car/vesc.yaml">VESC 설정 ↗</a> · <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/blob/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/config/car/controller.yaml">제어기 설정 ↗</a></p>
 </section>
 
-<div id="technical" class="technical-heading"><p class="eyebrow">TECHNICAL DOCUMENTATION</p><h2>센서 입력에서 모터 명령까지</h2><p><a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17">roboracer_unita_ws 커밋 c825fd8</a>의 코드·설정·README를 기준으로 정리했습니다.</p></div>
+<div id="technical" class="technical-heading"><p class="eyebrow">TECHNICAL DOCUMENTATION</p><h2>센서 입력에서 모터 명령까지</h2><p><a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17">roboracer_unita_ws 커밋 c825fd8</a> 기준으로, 센서 입력이 모터 명령이 되기까지를 따라갑니다.</p></div>
 
 <section id="hardware" class="article-section">
   <p class="eyebrow">03 / HARDWARE</p>
@@ -90,7 +90,7 @@
   </tbody></table></div>
   <h3>하드웨어 문제를 소프트웨어에서 함께 다루기</h3>
   <p>팀은 VESC 드라이버가 IMU 값을 g와 deg/s로 내보내던 문제를 m/s²와 rad/s로 바로잡고, 모터 드라이버에 50 A 상한의 전류 제동을 추가했습니다. LiDAR 연결이 끊기던 문제를 해결한 뒤에는 네트워크 상태를 확인하는 스크립트를 남겼습니다.</p>
-  <p>DDS 설정은 CycloneDDS로 바꾸고 사용할 네트워크 인터페이스를 지정했습니다. 설정 파일의 주석은 0.3초 멈춤의 원인이 DDS가 아니라 CPU 과부하였다고 기록하고 있어, 이후 연산량을 줄이는 작업으로 이어졌습니다.</p>
+  <p>DDS 설정은 CycloneDDS로 바꾸고 사용할 네트워크 인터페이스를 지정했습니다. 0.3초씩 멈추던 원인은 DDS가 아니라 CPU 과부하였고, 이후 연산량을 줄이는 작업으로 이어졌습니다.</p>
 </section>
 
 <section id="pipeline" class="article-section">
@@ -146,7 +146,7 @@
     <tr><td>curvature_factor</td><td>0.145</td><td>곡률에 따른 lookahead 감소</td></tr>
     <tr><td>trailing_gap</td><td>2.5</td><td>앞 차량 추종 시 유지 간격</td></tr>
   </tbody></table></div>
-  <p>README는 한 랩의 대부분에서 lookahead가 <code>t_clip_min</code>에 붙어 있어 속도 배율을 바꾸면 이 값도 함께 조정해야 하며, 따로 두면 차량이 좌우로 흔들린다고 기록합니다. 그래서 섹터마다 <code>t_clip_min</code>을 속도 배율과 짝지어 둘 수 있게 했습니다. 경로를 따라갈 수 없는 상황을 위한 대비책으로 Follow-the-Gap(disparity extender) 제어기도 포함되어 있습니다.</p>
+  <p>한 랩의 대부분에서 lookahead는 <code>t_clip_min</code>에 붙어 있습니다. 속도 배율을 바꾸면 이 값도 함께 조정해야 하고, 그러지 않으면 차량이 좌우로 흔들립니다. 그래서 섹터마다 <code>t_clip_min</code>을 속도 배율과 짝지어 둘 수 있게 했습니다. 경로를 따라갈 수 없는 상황을 위한 대비책으로 Follow-the-Gap(disparity extender) 제어기도 포함되어 있습니다.</p>
 </section>
 
 <section id="perception" class="article-section">
@@ -204,7 +204,7 @@
     <article><h3>arm64 Jetson의 파이썬 의존성</h3><p>apt로 설치한 skimage·OpenCV는 numpy 1.x 기준으로 빌드되어 있어, 가상환경에 numpy 2가 들어오면 import 단계에서 모두 깨집니다. numpy·numba 버전을 고정하고, 시뮬레이터와 최적화기는 <code>--no-deps</code>로 설치하며, 빌드는 가상환경의 인터프리터를 쓰도록 <code>python -m colcon build</code>로 실행합니다.</p></article>
     <article><h3>CPU 예산이 곧 주행 성능</h3><p>차량에서 편집기 서버를 띄우면 약 2.5 GB 메모리와 CPU를 차지해 파티클 필터가 굶습니다. 팀은 상태 머신의 틱당 연산을 줄이고, 시각화 마커 발행을 줄이고, 무거운 GP 학습은 기본으로 끄는 방식으로 연산을 확보했습니다.</p></article>
     <article><h3>하나의 거리, 세 개의 이름</h3><p>회피를 시작할 거리가 플래너·상태 머신·레이스라인 검사에서 서로 다른 파라미터로 표현됩니다. 세 값이 어긋나면 지나갈 수 있는 장애물 뒤를 따라가기만 하므로, 튜닝할 때 함께 맞춰야 합니다.</p></article>
-    <article><h3>남은 과제</h3><p>README는 상태 머신 루프를 아직 프로파일링하지 못했고, 정적 장애물 회피가 경로를 계획하고도 안전 검사에서 거절되어 실제로 진입하는 경우가 드물다고 기록합니다.</p></article>
+    <article><h3>남은 과제</h3><p>상태 머신 루프는 아직 프로파일링하지 못했습니다. 정적 장애물 회피도 경로를 만들어 놓고 안전 검사에서 거절돼 실제로 진입하는 경우가 드뭅니다.</p></article>
   </div>
 </section>
 
@@ -212,7 +212,7 @@
   <p class="eyebrow">12 / MEDIA &amp; REFERENCES</p>
   <h2>주행 영상과 소스 코드</h2>
   <figure class="optional-media rr-video"><video controls muted playsinline preload="metadata" poster="../static/images/roboracer_poster.jpg" aria-label="RoboRacer 차량 주행 테스트 영상"><source src="../static/videos/roboracer.mp4" type="video/mp4"></video><figcaption>RoboRacer 차량 주행 테스트</figcaption></figure>
-  <p>기술 내용은 <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17">roboracer_unita_ws 커밋 c825fd8</a>을 기준으로 정리했습니다. 파티클 필터, VESC 드라이버, 레이스라인 최적화기, Frenet 변환 등은 ForzaETH·f1tenth·TUM의 공개 코드를 기반으로 하며, 제어기와 상태 머신은 UNIST, 차선 변경 플래너와 궤적 예측·레이스라인 튜너는 UNICORN의 코드를 포팅했습니다.</p>
+  <p>기술 내용은 <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17">roboracer_unita_ws 커밋 c825fd8</a> 기준입니다. 파티클 필터, VESC 드라이버, 레이스라인 최적화기, Frenet 변환 등은 ForzaETH·f1tenth·TUM의 공개 코드를 기반으로 하며, 제어기와 상태 머신은 UNIST, 차선 변경 플래너와 궤적 예측·레이스라인 튜너는 UNICORN의 코드를 포팅했습니다.</p>
   <div class="reference-grid">
     <a href="https://github.com/hyunyoung1018/roboracer_unita_ws">팀 저장소 ↗</a>
     <a href="https://github.com/hyunyoung1018/roboracer_unita_ws/tree/c825fd88256706a01dd75aab653d07df15ef5f17/src/stack_master/launch">실행 구성 ↗</a>
@@ -224,4 +224,4 @@
 </section>
 
 <footer class="detail-footer"><a href="../index.html#projects">← 모든 프로젝트</a><span>박근호 · Computer Vision &amp; Robotics</span></footer>
-</div></main><script src="../static/js/project-media.js" defer></script></body></html>
+</div></main><script src="../static/js/project-media.js?v=20260915" defer></script></body></html>
