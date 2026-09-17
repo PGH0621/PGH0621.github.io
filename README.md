@@ -104,7 +104,7 @@ ffmpeg -i input.mp4 -vf "scale=1280:-2" -an -c:v libx264 -crf 28 \
 공통 스타일은 `static/css/site.css`, 상세페이지와 프로젝트별 메뉴 스타일은 `static/css/projects.css`에서 수정합니다.
 사이드바는 JavaScript 없이도 사용할 수 있도록 각 HTML에 포함되어 있으므로 메뉴 변경 시 `index.html`과 `projects/*.html`에 함께 반영하세요.
 
-## 참고 링크
+### 참고 링크
 
 - Nerfies 원본 템플릿: https://github.com/nerfies/nerfies.github.io
 - Bulma 문서: https://bulma.io/documentation/
