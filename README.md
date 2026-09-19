@@ -35,7 +35,7 @@ portfolio/
    git push -u origin main
    ```
 
-3. 저장소 → Settings → Pages → Source를 `Deploy from a branch`, 브랜치를 `main` / `/ (root)`로
+3. 저장소 → Settings → Pages → Source를 `Deploy from a branch`, 브랜치를 `main` / `/ (root)`로 
    설정하고 저장합니다. 1~2분 뒤 주소가 열립니다.
 
 로컬에서 미리 볼 때는 파일을 더블클릭해도 되고, 경로 문제가 신경 쓰이면:
