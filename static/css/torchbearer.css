@@ -1,0 +1,29 @@
+.torch-page .detail-container { max-width: 1080px; }
+.torch-page .torch-hero { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 2.5rem; margin-top: 2rem; }
+.torch-page .detail-hero { padding: 2rem 0; }
+.torch-page .compact-title { font-size: clamp(2rem, 3vw, 3rem); }
+.torch-page .torch-intro { max-width: 34rem; line-height: 1.9; margin-top: 1rem; color: #424b56; }
+.torch-page .torch-figure { margin: 2rem 0 0; }
+.torch-page .torch-hero .torch-figure { margin: 0; }
+.torch-page .torch-figure img, .torch-page .torch-figure video { display: block; width: 100%; height: auto; border-radius: 6px; background: #f4f6f8; }
+.torch-page .torch-figure a { display: block; }
+.torch-page .torch-figure.is-narrow { max-width: 620px; margin-inline: auto; }
+.torch-page figcaption { padding: .65rem 0 0; font-size: .78rem; color: #596370; line-height: 1.7; }
+.torch-page .article-section h2 { font-size: 1.5rem; margin-bottom: 1.1rem; }
+.torch-page .article-section h3 { font-size: 1.08rem; }
+.torch-page .article-section p { color: #303943; }
+/* 진행 일지 */
+.torch-page .log-list { list-style: none; margin: 1.75rem 0 0; padding: 0; }
+.torch-page .log-entry { position: relative; padding: 0 0 1.9rem 1.6rem; border-left: 2px solid var(--line); }
+.torch-page .log-entry:last-child { padding-bottom: 0; border-left-color: transparent; }
+.torch-page .log-entry::before { content: ""; position: absolute; left: -6px; top: .5rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.torch-page .log-date { display: inline-block; padding: .2rem .55rem; border-radius: 4px; background: var(--tint); color: var(--accent); font-size: .78rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.torch-page .log-entry h3 { margin: .6rem 0 .6rem; font-size: 1.05rem; }
+.torch-page .log-entry p { margin-bottom: .6rem; font-size: .95rem; line-height: 1.9; }
+.torch-page .log-entry ul { margin: .5rem 0 0; padding: 0; list-style: none; }
+.torch-page .log-entry li { position: relative; padding-left: .95rem; margin-bottom: .45rem; font-size: .93rem; line-height: 1.85; color: #444b55; }
+.torch-page .log-entry li::before { content: ""; position: absolute; left: 0; top: .95em; width: 5px; height: 1px; background: var(--muted); }
+.torch-page .source-note { font-size: .85rem; color: #596370; margin-top: 1.25rem; line-height: 1.85; }
+@media(max-width:1050px) {
+ .torch-page .torch-hero { grid-template-columns: minmax(0,1fr); gap: 1.5rem; }
+}

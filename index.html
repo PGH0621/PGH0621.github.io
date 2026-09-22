@@ -17,7 +17,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <link href="static/css/site.css?v=20260915" rel="stylesheet"/>
 <link href="static/css/projects.css?v=20260915" rel="stylesheet"/>
-<link href="static/css/home.css?v=20260915" rel="stylesheet"/></head>
+<link href="static/css/home.css?v=20260923" rel="stylesheet"/></head>
 <body class="home-page">
 <!-- ============ HERO ============ -->
 <nav aria-label="페이지 목차" class="section-nav">
@@ -27,6 +27,7 @@
 <a href="index.html#projects">프로젝트</a>
 <div aria-label="프로젝트별 상세페이지" class="project-nav"><a class="project-nav-link" href="projects/roboracer.html">RoboRacer 2026</a><a class="project-nav-link" href="projects/parky.html">PARKY</a><a class="project-nav-link" href="projects/megabooks.html">메가북스</a><a class="project-nav-link" href="projects/headset.html">청각 보조 헤드셋</a></div>
 <a href="index.html#ongoing">진행 중</a>
+<div aria-label="진행 중 프로젝트 상세페이지" class="project-nav"><a class="project-nav-link" href="projects/torchbearer.html">횃불이 휴머노이드</a></div>
 <a href="index.html#community">교육과 커뮤니티</a>
 <div aria-label="교육 활동 상세페이지" class="project-nav"><a class="project-nav-link" href="projects/codinghakdang.html">코딩학당</a></div>
 <a href="index.html#awards">수상</a>
@@ -57,20 +58,23 @@
 <div aria-label="프로젝트 하이라이트" aria-roledescription="carousel" class="home-slider" id="home-slider">
 <div class="slider-stage">
 <div class="slider-track">
-<figure aria-label="1 / 5" aria-roledescription="slide" class="slider-slide is-dark" data-href="projects/roboracer.html" data-kicker="RoboRacer 2026" data-title="1/10 자율주행 레이싱 차량 주행 테스트" role="group">
+<figure aria-label="1 / 6" aria-roledescription="slide" class="slider-slide is-dark" data-href="projects/roboracer.html" data-kicker="RoboRacer 2026" data-title="1/10 자율주행 레이싱 차량 주행 테스트" role="group">
 <video aria-label="RoboRacer 차량 주행 테스트 영상" autoplay="" class="slider-media" loop="" muted="" playsinline="" poster="static/images/roboracer_poster.jpg" preload="metadata"><source src="static/videos/roboracer.mp4" type="video/mp4"/></video>
 </figure>
-<figure aria-label="2 / 5" aria-roledescription="slide" class="slider-slide is-white" data-href="projects/roboracer.html#raceline" data-kicker="RoboRacer 2026" data-title="IFAC 트랙 지도 위의 최소 곡률 레이스라인" role="group">
+<figure aria-label="2 / 6" aria-roledescription="slide" class="slider-slide is-white" data-href="projects/roboracer.html#raceline" data-kicker="RoboRacer 2026" data-title="IFAC 트랙 지도 위의 최소 곡률 레이스라인" role="group">
 <img alt="IFAC RoboRacer 트랙 지도 위에 속도에 따라 색으로 표시한 레이스라인" class="slider-media" height="816" loading="lazy" src="static/images/roboracer_raceline.png" width="1586"/>
 </figure>
-<figure aria-label="3 / 5" aria-roledescription="slide" class="slider-slide" data-href="projects/parky.html" data-kicker="PARKY" data-title="지하주차장 불법주차 단속 로봇" role="group">
+<figure aria-label="3 / 6" aria-roledescription="slide" class="slider-slide" data-href="projects/parky.html" data-kicker="PARKY" data-title="지하주차장 불법주차 단속 로봇" role="group">
 <img alt="PARKY — 표정 디스플레이와 뎁스 카메라를 갖춘 주차 단속 로봇" class="slider-media" height="855" loading="lazy" src="static/images/parky.jpg" width="623"/>
 </figure>
-<figure aria-label="4 / 5" aria-roledescription="slide" class="slider-slide is-white" data-href="projects/megabooks.html" data-kicker="메가북스" data-title="시선을 따라 그림·소리·바람이 나오는 4D 독서" role="group">
+<figure aria-label="4 / 6" aria-roledescription="slide" class="slider-slide is-white" data-href="projects/megabooks.html" data-kicker="메가북스" data-title="시선을 따라 그림·소리·바람이 나오는 4D 독서" role="group">
 <img alt="메가북스 서비스 구성: 아이트래킹 앱, 빔프로젝터, Control Box" class="slider-media" height="788" loading="lazy" src="static/images/megabooks_concept.jpg" width="1400"/>
 </figure>
-<figure aria-label="5 / 5" aria-roledescription="slide" class="slider-slide" data-href="projects/headset.html" data-kicker="청각 보조 헤드셋" data-title="주변 음성을 텍스트와 진동 알림으로 전하는 보조기기" role="group">
+<figure aria-label="5 / 6" aria-roledescription="slide" class="slider-slide" data-href="projects/headset.html" data-kicker="청각 보조 헤드셋" data-title="주변 음성을 텍스트와 진동 알림으로 전하는 보조기기" role="group">
 <img alt="청각 보조 헤드셋 시제품" class="slider-media" height="1448" loading="lazy" src="static/images/headset.png" width="1086"/>
+</figure>
+<figure aria-label="6 / 6" aria-roledescription="slide" class="slider-slide is-white" data-href="projects/torchbearer.html" data-kicker="횃불이 휴머노이드" data-title="MuJoCo에서 강화학습으로 걷기를 배우는 2족 로봇" role="group">
+<video aria-label="MuJoCo 시뮬레이션에서 속도 명령을 따라가는 2족 로봇 학습 영상" class="slider-media" loop="" muted="" playsinline="" poster="static/images/torchbearer_poster.jpg" preload="metadata"><source src="static/videos/%ED%9A%83%EB%B6%88%EC%9D%B4RL.mp4" type="video/mp4"/></video>
 </figure>
 </div>
 <button aria-label="이전 슬라이드" class="slider-arrow slider-prev" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg></button>
@@ -78,7 +82,7 @@
 </div>
 <div aria-live="polite" class="slider-caption">
 <div><p class="slider-kicker">RoboRacer 2026</p><a class="slider-title" href="projects/roboracer.html">1/10 자율주행 레이싱 차량 주행 테스트</a></div>
-<span class="slider-count">1 / 5</span>
+<span class="slider-count">1 / 6</span>
 </div>
 <div class="slider-dots"></div>
 </div>
@@ -232,21 +236,23 @@
 <p class="section-note">아직 결과가 나오지 않았지만 지금 손대고 있는 것들입니다.</p>
 <div class="columns">
 <div class="column is-6 wip-item">
-<div class="project-placeholder">횃불이 로봇 콘셉트</div>
-<h3 class="project-title">횃불이 휴머노이드</h3>
-<p class="project-meta">개인 프로젝트 · 플랫폼 선정 단계</p>
-<div class="project-body">
+<video aria-label="MuJoCo 시뮬레이션에서 속도 명령을 따라가는 2족 로봇 학습 영상" class="project-video is-sim" controls="" loop="" muted="" playsinline="" poster="static/images/torchbearer_poster.jpg" preload="metadata"><source src="static/videos/%ED%9A%83%EB%B6%88%EC%9D%B4RL.mp4" type="video/mp4"/></video>
+<h3 class="project-title"><a href="projects/torchbearer.html">횃불이 휴머노이드</a></h3>
+<p class="project-meta">개인 프로젝트 · 시뮬레이션 보행 학습 단계</p>
+<div class="project-body"><a class="project-summary-link" href="projects/torchbearer.html">
 <p>
             인천대학교 마스코트 '횃불이'를 실제로 걷고 움직이는 휴머노이드 로봇으로
-            만들어 보는 프로젝트입니다. 오픈소스 휴머노이드 플랫폼을 조사하며
-            구동계와 제어 스택을 정하고 있습니다.
+            만들어 보는 프로젝트입니다. 서보 10개로 40 cm급 2족 하체를 설계하고,
+            MuJoCo 시뮬레이션에서 강화학습으로 걷는 정책을 학습시키고 있습니다.
           </p>
-</div>
+</a></div>
 <div class="tag-row tags">
 <span class="tag">Humanoid</span>
-<span class="tag">3D Printing</span>
+<span class="tag">MuJoCo</span>
+<span class="tag">Reinforcement Learning</span>
 <span class="tag">Physical AI</span>
 </div>
+<p class="project-links"><a href="projects/torchbearer.html#log">진행 일지</a></p>
 </div>
 <div class="column is-6 wip-item">
 <div class="project-placeholder">FogApp 화면</div>

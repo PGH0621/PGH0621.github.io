@@ -91,3 +91,5 @@
  .home-page .award-item { grid-template-columns: auto minmax(0,1fr); align-items: start; gap: .4rem .9rem; }
  .home-page .award-role { grid-column: 2; justify-self: start; }
 }
+/* 진행 중 — 시뮬레이션 영상(흰 배경)은 잘리지 않게 여백을 흰색으로 */
+.home-page .project-video.is-sim { background: #fff; border: 1px solid var(--line); }

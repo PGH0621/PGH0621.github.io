@@ -8,7 +8,7 @@ CSS는 Bulma를 CDN으로 불러옵니다. 파일을 GitHub에 올리면 그대�
 ```
 portfolio/
 ├── index.html          # 포트폴리오 메인
-├── projects/           # parky, roboracer, megabooks, headset 상세페이지
+├── projects/           # parky, roboracer, megabooks, headset, torchbearer 상세페이지
 └── static/
     ├── css/            # site.css(공통), projects.css(상세페이지)
     ├── js/             # project-media.js(첨부 원본 이미지 연결)

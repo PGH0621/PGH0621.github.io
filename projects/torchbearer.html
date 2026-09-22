@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>횃불이 휴머노이드 · 박근호</title><meta content="인천대학교 마스코트 횃불이를 걷는 휴머노이드로 만드는 개인 프로젝트. 10자유도 하체 설계와 MuJoCo·mjlab 강화학습 보행 진행 일지입니다." name="description"/>
+<meta content="횃불이 휴머노이드 · 박근호" property="og:title"/><meta content="인천대학교 마스코트 횃불이를 걷는 휴머노이드로 만드는 개인 프로젝트. 10자유도 하체 설계와 MuJoCo·mjlab 강화학습 보행 진행 일지입니다." property="og:description"/><meta content="article" property="og:type"/>
+<link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="../static/css/site.css?v=20260915" rel="stylesheet"/><link href="../static/css/projects.css?v=20260915" rel="stylesheet"/>
+<link href="../static/css/torchbearer.css?v=20260923" rel="stylesheet"/></head><body class="detail-page torch-page"><a class="skip-link" href="#main">본문으로 건너뛰기</a><nav aria-label="페이지 목차" class="section-nav">
+<div class="section-nav-profile"><p class="section-nav-name">박근호</p><p class="section-nav-description">Computer Vision<br/>and Robotics</p></div>
+<p class="section-nav-label">CONTENTS</p>
+<a href="../index.html#about">소개</a>
+<a href="../index.html#projects">프로젝트</a>
+<div aria-label="프로젝트별 상세페이지" class="project-nav"><a class="project-nav-link" href="../projects/roboracer.html">RoboRacer 2026</a><a class="project-nav-link" href="../projects/parky.html">PARKY</a><a class="project-nav-link" href="../projects/megabooks.html">메가북스</a><a class="project-nav-link" href="../projects/headset.html">청각 보조 헤드셋</a></div>
+<a href="../index.html#ongoing">진행 중</a>
+<div aria-label="진행 중 프로젝트 상세페이지" class="project-nav"><a aria-current="page" class="project-nav-link" href="../projects/torchbearer.html">횃불이 휴머노이드</a></div>
+<a href="../index.html#community">교육과 커뮤니티</a>
+<div aria-label="교육 활동 상세페이지" class="project-nav"><a class="project-nav-link" href="../projects/codinghakdang.html">코딩학당</a></div>
+<a href="../index.html#awards">수상</a>
+<a href="../index.html#experience">이력</a>
+</nav>
+<main class="detail-main" id="main"><div class="detail-container"><div class="breadcrumb-line"><a href="../index.html#ongoing">진행 중</a><span aria-hidden="true">/</span><span>횃불이 휴머노이드</span></div>
+<div class="torch-hero"><header class="detail-hero"><p class="eyebrow">HUMANOID / REINFORCEMENT LEARNING</p><h1 class="compact-title">횃불이 휴머노이드</h1><p class="detail-lead">인천대학교 마스코트를<br/>직접 걷게 만들기.</p><p class="torch-intro">보유하고 있는 Dynamixel 서보 10개로 만들 수 있는 40 cm급 2족 하체를 설계하고, MuJoCo 시뮬레이션 안에서 강화학습으로 걷는 정책을 학습시키고 있습니다. 시뮬레이션에서 걷는 것이 확인되면 실제 기체를 조립해 정책을 올릴 계획입니다.</p><div class="detail-tags"><span>MuJoCo</span><span>mjlab</span><span>PPO</span><span>Humanoid</span><span>Dynamixel</span><span>Sim2Real</span></div><div class="detail-actions"><a class="primary-link" href="#log">진행 일지 읽기 ↓</a><a href="#setup">학습 환경 보기 ↓</a></div></header>
+<figure class="torch-figure"><video aria-label="MuJoCo 시뮬레이션에서 속도 명령을 따라가는 2족 로봇 정책 재생 영상" controls="" loop="" muted="" playsinline="" poster="../static/images/torchbearer_poster.jpg" preload="metadata"><source src="../static/videos/%ED%9A%83%EB%B6%88%EC%9D%B4RL.mp4" type="video/mp4"/></video><figcaption>MuJoCo에서 학습한 보행 정책 재생 화면 · 로봇 위의 화살표가 따라가야 할 속도 명령입니다.</figcaption></figure></div>
+<dl class="project-facts"><div><dt>프로젝트</dt><dd>개인 프로젝트 · 2026.09 ~</dd></div><div><dt>현재 단계</dt><dd>시뮬레이션 보행 학습 (하체 10자유도)</dd></div><div><dt>사용 도구</dt><dd>MuJoCo · mjlab · rsl_rl(PPO) · Dynamixel XL430</dd></div></dl>
+<nav aria-label="횃불이 프로젝트 목차" class="article-toc"><a href="#goal">목표</a><a href="#robot">로봇 설계</a><a href="#setup">학습 환경</a><a href="#log">진행 일지</a><a href="#next">다음 단계</a></nav>
+<section class="article-section" id="goal"><p class="eyebrow">01 / GOAL</p><h2>마스코트를 실제로 걷게 만들기</h2><p>인천대학교 마스코트 ‘횃불이’를 화면 밖으로 꺼내, 실제로 걷고 움직이는 휴머노이드로 만들어 보는 개인 프로젝트입니다. 오픈소스 휴머노이드 플랫폼을 조사하며 구동계와 제어 스택을 고민하다가, 완제품 플랫폼을 사는 대신 보유하고 있는 Dynamixel XL430-W250-T 10개로 만들 수 있는 최소 구성의 2족 하체부터 직접 설계하기로 했습니다.</p>
+<figure class="torch-figure is-narrow"><a href="../static/images/%ED%9A%83%EB%B6%88%EB%B4%87.png"><img alt="횃불봇 콘셉트 디자인 — 정면·측면·후면 3면도. 불꽃 머리에 가방을 멘 마스코트 형태" height="342" loading="lazy" src="../static/images/%ED%9A%83%EB%B6%88%EB%B4%87.png" width="728"/></a><figcaption>‘횃불봇’ 콘셉트 디자인 3면도 · 클릭하여 원본 보기</figcaption></figure>
+<p>목표로 하는 외형은 위와 같습니다. 불꽃 모양 머리가 몸통보다 크고 다리가 짧은 비율이라, 무게중심이 높고 보폭이 좁은 조건에서 걷는 문제를 풀어야 합니다. 머리는 가볍게 비워 두고, 배터리와 제어 보드는 가방 부분에 넣어 무게를 골반 가까이 내리는 방향으로 잡고 있습니다.</p>
+<p>순서는 <strong>하체 설계 → 시뮬레이션 보행 학습 → 실기체 조립과 Sim2Real → 상체·외형</strong>으로 잡았습니다. 걷는 문제를 먼저 풀고, 콘셉트의 외형은 그 위에 올리는 구조입니다.</p></section>
+<section class="article-section" id="robot"><p class="eyebrow">02 / HARDWARE DESIGN</p><h2>서보 10개로 만드는 40 cm 2족 하체</h2><p>다리 하나에 서보 5개를 씁니다. 골반 쪽에 hip roll, 그 아래에 hip pitch를 두어 hip·knee·ankle의 pitch 축이 항상 평행하게 배치했습니다. 보행 제어에서 다뤄야 할 평면이 단순해집니다.</p>
+<div class="table-scroll"><table><caption>다리 한쪽의 관절 구성 (좌우 대칭, 총 10자유도)</caption><thead><tr><th>순서</th><th>관절</th><th>축</th><th>가동 범위</th></tr></thead><tbody><tr><td>1</td><td>hip_roll</td><td>roll</td><td>−0.35 ~ 0.60 rad</td></tr><tr><td>2</td><td>hip_pitch</td><td>pitch</td><td>−1.5 ~ 0.8 rad</td></tr><tr><td>3</td><td>knee</td><td>pitch</td><td>0 ~ 2.0 rad</td></tr><tr><td>4</td><td>ankle_pitch</td><td>pitch</td><td>−1.0 ~ 1.0 rad</td></tr><tr><td>5</td><td>ankle_roll</td><td>roll</td><td>−0.4 ~ 0.4 rad</td></tr></tbody></table></div>
+<figure class="torch-figure"><a href="../static/images/torchbearer_model.png"><img alt="설계한 2족 하체 로봇의 3면 렌더링 — 비스듬한 시점, 정면, 측면" height="720" loading="lazy" src="../static/images/torchbearer_model.png" width="2160"/></a><figcaption>치수 스크립트로 생성한 URDF/MJCF 모델 렌더링 · 클릭하여 원본 보기</figcaption></figure>
+<p>전체 높이는 약 40 cm, 추정 질량은 약 1 kg입니다. 치수는 모두 생성 스크립트 상단의 변수로 두어, 값 하나만 바꾸면 URDF와 MJCF가 함께 다시 만들어집니다. 조립 후 실측값으로 갈아끼우기 위해서입니다.</p>
+<h3>토크 병목은 hip roll</h3><p>한 발로 서서 무게중심을 지지발 위로 옮긴 준정적 자세로 관절별 토크를 계산했습니다. XL430의 정지 토크는 11.1 V에서 1.4 N·m인데, hip roll이 0.51~0.53 N·m(약 38%)로 가장 크고 나머지는 20% 이하였습니다. 실제 보행에서는 가속 때문에 정적 값의 1.5~2배까지 올라갈 수 있어, 고관절 좌우 간격을 90 mm에서 76 mm로 줄여 여유를 확보했습니다.</p></section>
+<section class="article-section" id="setup"><p class="eyebrow">03 / TRAINING SETUP</p><h2>mjlab 위에 올린 속도 추종 태스크</h2><p>MuJoCo 기반 강화학습 프레임워크인 mjlab에 <code>Mjlab-Velocity-Flat-Mini-Biped</code>라는 태스크로 등록했습니다. 평지에서 주어진 전진·횡방향·회전 속도 명령을 따라 걷는 문제입니다. Unitree G1용 속도 추종 설정을 기준으로 삼고, 40 cm·1 kg에 느린 취미용 서보라는 조건에 맞춰 값을 다시 잡았습니다.</p>
+<div class="table-scroll"><table><caption>G1 기본 설정에서 바꾼 값과 이유</caption><thead><tr><th>항목</th><th>G1</th><th>횃불이 하체</th><th>이유</th></tr></thead><tbody>
+<tr><td>전진 속도 명령</td><td>−1.0 ~ 1.0 m/s</td><td>−0.2 ~ 0.3 m/s</td><td>키 40 cm, 모터 무부하 속도 약 6 rad/s</td></tr>
+<tr><td>속도 추종 보상 폭</td><td>0.5 m/s</td><td>0.1 m/s</td><td>명령 크기에 맞춤</td></tr>
+<tr><td>발 들기 목표 높이</td><td>10 cm</td><td>2.5 cm</td><td>다리 길이에 비례</td></tr>
+<tr><td>외란(밀기)</td><td>±0.5 m/s</td><td>±0.15 m/s</td><td>1 kg 로봇</td></tr>
+<tr><td>행동 크기</td><td>0.25 × 토크한계 / kp</td><td>0.25 rad 고정</td><td>공식대로면 0.07 rad밖에 되지 않음</td></tr>
+<tr><td>정책 네트워크</td><td>512-256-128</td><td>256-128-64</td><td>관절 10개</td></tr>
+<tr><td>지형</td><td>평지 + 거친 지형</td><td>평지</td><td>먼저 평지부터</td></tr>
+</tbody></table></div>
+<p>학습은 rsl_rl의 PPO로 돌립니다. actor·critic 모두 256-128-64 ELU, 환경 4,096개 병렬, 5,000 iteration 설정입니다. 정책은 50 Hz로 동작하고(시뮬레이션 5 ms × 4), 관측은 골반 IMU의 각속도·선속도·중력 방향과 관절 각도·각속도, 직전 행동, 속도 명령으로 구성했습니다. 관측 노이즈와 무작위 밀기, 발 마찰·무게중심 무작위화를 넣어 실기체로 옮길 때의 여유를 두었습니다.</p></section>
+<section class="article-section" id="log"><p class="eyebrow">04 / DEV LOG</p><h2>진행 일지</h2>
+<ol class="log-list">
+<li class="log-entry"><span class="log-date">2026.09.22</span><h3>하체 설계와 자동 검증</h3><ul><li>다리당 5자유도, 총 10자유도. 치수를 넣으면 URDF와 MJCF가 함께 생성되는 스크립트로 모델을 만들었습니다.</li><li>자동 검사 세 가지를 통과했습니다 — 링크 일체 연결, 10개 관절의 혼·아이들러 체결, 무작위 자세 5,000개에서 부품 간섭 0건.</li><li>토크 병목은 hip roll(정지 토크의 약 38%). 고관절 간격을 90 mm에서 76 mm로 줄여 낮췄습니다.</li></ul></li>
+<li class="log-entry"><span class="log-date">2026.09.23</span><h3>mjlab 학습 태스크와 보상 재설계</h3><ul><li>평지 속도 추종 태스크 <code>Mjlab-Velocity-Flat-Mini-Biped</code>를 등록하고, 환경 생성부터 체크포인트 저장까지 확인했습니다.</li><li>1차 학습에서 정책이 발을 떼지 않았습니다. 속도 명령 범위(−0.15 ~ 0.25 m/s)가 좁고 커리큘럼까지 걸려 있어, 서 있기만 해도 속도 추종 보상의 약 80%를 받았습니다.</li><li>각속도 추종 항이 골반의 roll·pitch까지 벌점으로 봐서, 발을 떼기 위해 필요한 좌우 흔들림이 그대로 감점됐습니다.</li><li>명령 범위를 −0.2 ~ 0.3 m/s로 넓히고 커리큘럼을 뺐습니다. 각속도 추종 폭은 되돌리고, 자세 유지 보상은 0.5로 낮추고, 발이 공중에 떠 있는 시간에 주는 보상은 1.0으로 올렸습니다.</li></ul></li>
+</ol>
+<p class="source-note">일지의 수치는 설계·학습 설정 스크립트와 자동 검사 결과에서 가져왔습니다. 모터의 관성·마찰 값은 아직 실측하지 않은 추정값입니다.</p></section>
+<section class="article-section" id="next"><p class="eyebrow">05 / NEXT</p><h2>실기체로 넘어가기 전에 할 것</h2>
+<h3>모터 시스템 식별</h3><p>지금 시뮬레이션에 들어간 XL430의 관성과 강성·감쇠, 관절 마찰은 데이터시트에서 추정한 값입니다. 실제 모터에 스텝 입력을 주고 응답을 기록해 시뮬레이션과 맞추는 작업이 Sim2Real의 첫 단계입니다.</p>
+<h3>실측 질량과 실제 브래킷</h3><p>현재 형상은 박스와 원판으로 단순화한 모델입니다. CAD로 실제 브래킷을 모델링해 STL을 뽑고, 조립 후 링크별 무게를 재서 모델을 다시 생성할 계획입니다.</p>
+<h3>관측을 실제 센서에 맞추기</h3><p>관측값인 각속도·선속도·중력 방향은 골반 IMU에서 받습니다. 이 중 선속도는 IMU만으로 추정하기 어려워서, 처음에는 관측에서 빼고 다시 학습하는 쪽도 함께 검토하고 있습니다.</p>
+<h3>그다음</h3><p>평지에서 걷는 것이 확인되면 거친 지형을 커리큘럼으로 넣고, 그 위에 상체와 횃불이 외형을 올릴 차례입니다.</p></section>
+<footer class="detail-footer"><a href="../index.html#ongoing">← 진행 중인 프로젝트</a><span>박근호 · Computer Vision &amp; Robotics</span></footer></div></main></body></html>
