@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>박근호 포트폴리오 요약</title>
+<!-- PDF 생성: chrome --headless --no-pdf-header-footer --print-to-pdf=portfolio-summary-2026.pdf _summary-source.html -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root { --accent:#16457e; --ink:#1f2933; --muted:#5b6572; --line:#e3e7ec; --tint:#eef3fa; }
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+body { font-family:Pretendard,'Malgun Gothic',sans-serif; color:var(--ink); font-size:9.6pt; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+@page { size:A4; margin:0; }
+.page { width:210mm; height:297mm; padding:15mm 14mm 13mm; page-break-after:always; position:relative; display:flex; flex-direction:column; overflow:hidden; }
+.page:last-child { page-break-after:auto; }
+.page-num { position:absolute; right:14mm; bottom:7mm; font-size:8pt; color:var(--muted); }
+.page-tag { position:absolute; left:14mm; bottom:7mm; font-size:8pt; color:var(--muted); letter-spacing:.06em; }
+h1 { margin:0; font-size:30pt; font-weight:800; letter-spacing:-.04em; }
+h2.sec { margin:0 0 3mm; padding-bottom:1.6mm; border-bottom:1.6px solid var(--accent); font-size:12.5pt; font-weight:800; letter-spacing:-.02em; }
+.eyebrow { margin:0 0 2mm; color:var(--accent); font-size:8pt; font-weight:700; letter-spacing:.16em; }
+.lead { margin:3mm 0 0; font-size:12pt; font-weight:600; color:#2b3440; }
+.affil { margin:2.5mm 0 0; color:var(--muted); font-size:9pt; line-height:1.7; }
+.cover-intro { margin-top:6mm; }
+.cover-intro p { margin:0 0 2.5mm; }
+.stats { display:flex; gap:3mm; margin:5mm 0; }
+.stats div { flex:1; padding:3.5mm 4mm; border-radius:2mm; background:var(--tint); }
+.stats dt { margin:0; font-size:8pt; color:var(--muted); }
+.stats dd { margin:1mm 0 0; font-size:14pt; font-weight:800; color:var(--accent); letter-spacing:-.02em; }
+.stats dd small { display:block; margin-top:.8mm; font-size:7.6pt; font-weight:500; color:var(--muted); letter-spacing:0; }
+.kv { display:flex; gap:5mm; margin-top:1mm; }
+.kv > div { flex:1; }
+.kv h3 { margin:0 0 1.2mm; font-size:9pt; }
+.kv p { margin:0; color:#3b4552; }
+.highlights { display:flex; gap:4mm; margin-top:6mm; }
+.highlights > div { flex:1; padding-left:3mm; border-left:2px solid var(--accent); }
+.highlights h4 { margin:0 0 1.2mm; font-size:9.2pt; }
+.highlights p { margin:0; font-size:8.8pt; color:#3b4552; line-height:1.6; }
+.page.big { font-size:10.3pt; }
+.page.big .proj { padding:7.5mm 0; }
+.page.big .proj:first-of-type { padding-top:4mm; }
+.page.big .body-grid figure { flex:0 0 53mm; }
+.page.big ul.pts li { margin-bottom:2mm; }
+.page.big .proj-head h3 { font-size:13.2pt; }
+.page.big .meta { font-size:8.8pt; }
+.cover-strip { display:flex; gap:3mm; margin-top:auto; }
+.cover-strip figure { flex:1; margin:0; }
+.cover-strip img { width:100%; height:44mm; object-fit:cover; border-radius:2mm; display:block; border:1px solid var(--line); }
+.cover-strip figcaption { margin-top:1.4mm; font-size:7.6pt; color:var(--muted); }
+.proj { padding:5mm 0; border-bottom:1px solid var(--line); }
+.proj:last-of-type { border-bottom:0; }
+.proj-head { display:flex; justify-content:space-between; align-items:baseline; gap:4mm; }
+.proj-head h3 { margin:0; font-size:12.5pt; font-weight:800; letter-spacing:-.02em; }
+.proj-head .year { flex:none; font-size:8.4pt; color:var(--muted); font-weight:600; }
+.meta { margin:1.4mm 0 0; font-size:8.4pt; color:var(--accent); font-weight:600; }
+.summary { margin:2mm 0 0; }
+.body-grid { display:flex; gap:5mm; margin-top:3mm; align-items:flex-start; }
+.body-grid .txt { flex:1; min-width:0; }
+.body-grid figure { flex:0 0 46mm; margin:0; }
+.body-grid figure img { width:100%; border-radius:2mm; border:1px solid var(--line); display:block; }
+.body-grid figure figcaption { margin-top:1.2mm; font-size:7.4pt; color:var(--muted); line-height:1.5; }
+ul.pts { margin:0; padding-left:4.5mm; }
+ul.pts li { margin-bottom:1.4mm; }
+ul.pts li strong { color:var(--accent); }
+.tags { margin-top:2.5mm; display:flex; flex-wrap:wrap; gap:1.5mm; }
+.tags span { padding:.9mm 2mm; border-radius:1mm; background:var(--tint); color:var(--accent); font-size:7.6pt; font-weight:600; }
+table { width:100%; border-collapse:collapse; font-size:8.6pt; }
+td { padding:1.7mm 2mm; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+td.date { width:20mm; color:var(--muted); font-variant-numeric:tabular-nums; }
+td.role { width:14mm; }
+.role-b { color:var(--accent); font-weight:700; }
+.two { display:flex; gap:5mm; }
+.two > div { flex:1; }
+.mini h4 { margin:0 0 1.2mm; font-size:9.2pt; }
+.mini p { margin:0 0 3mm; font-size:8.8pt; color:#3b4552; }
+.footer-note { margin-top:auto; padding-top:3mm; border-top:1px solid var(--line); font-size:7.8pt; color:var(--muted); }
+</style></head><body>
+
+<section class="page">
+  <p class="eyebrow">PORTFOLIO SUMMARY · 2026</p>
+  <h1>박근호</h1>
+  <p class="lead">컴퓨터비전과 로봇 시스템을 공부하고 만듭니다</p>
+  <p class="affil">인천대학교 정보기술대학 임베디드시스템공학과 학사 (2023.03 – 2026.08)<br>
+  인천대학교 대학원 인공지능응용시스템 연구실 석사과정 · 학·석사 연계과정 연구장학생 (2026.09 ~)<br>
+  포트폴리오 pgh0621.github.io</p>
+
+  <div class="cover-intro">
+    <p>인식한 것을 실제로 움직이는 하드웨어에 연결하는 지점에 관심이 있습니다. 학부에서는 임베디드시스템공학을 전공하며 자율주행 레이싱 스택과 주차 단속 로봇을 직접 만들어 돌려봤고, 지금은 인공지능응용시스템 연구실에서 컴퓨터비전과 Physical AI를 주제로 산업체 협업 과제를 함께 진행하고 있습니다.</p>
+    <p>논문을 읽는 것보다 그 방법을 실제 로봇 위에서 돌아가게 만드는 과정에서 배우는 게 많다고 생각합니다. 그래서 만든 것은 대부분 공개하고, 배운 것은 교육 프로그램으로 다시 정리합니다.</p>
+  </div>
+
+  <dl class="stats">
+    <div><dt>프로젝트</dt><dd>5<small>자율주행 · 로봇 · HCI</small></dd></div>
+    <div><dt>수상</dt><dd>7<small>대상 1 · 팀장 4</small></dd></div>
+    <div><dt>교육 봉사</dt><dd>17회<small>청소년 400명</small></dd></div>
+    <div><dt>운영 기간</dt><dd>2022 ~<small>코딩학당 운영 총괄</small></dd></div>
+  </dl>
+
+  <div class="kv">
+    <div><h3>연구 관심</h3><p>자율주행 (BEV fusion, occupancy grid) · Visual SLAM 및 3D 복원 · Sim-to-real 로봇 제어</p></div>
+    <div><h3>주로 쓰는 도구</h3><p>ROS 2 · PyTorch · Python / C++ · Jetson Orin · MuJoCo</p></div>
+  </div>
+
+  <div class="highlights">
+    <div><h4>자율주행 스택</h4><p>LiDAR 지도 작성과 위치 추정부터 경로 계획·제어까지, ROS 2로 주행 시스템을 직접 구현</p></div>
+    <div><h4>로봇 하드웨어</h4><p>3D 프린팅 구조물과 센서 마운트 제작, 구동계 캘리브레이션과 실차 파라미터 튜닝</p></div>
+    <div><h4>팀과 교육</h4><p>교육 봉사 프로젝트 운영 총괄, 수상 7건 중 4건을 팀장으로 수행</p></div>
+  </div>
+
+  <div class="cover-strip">
+    <figure><img src="../images/roboracer.jpg" alt=""><figcaption>RoboRacer 2026 — 1/10 자율주행 레이싱</figcaption></figure>
+    <figure><img src="../images/parky.jpg" alt=""><figcaption>PARKY — 지하주차장 단속 로봇</figcaption></figure>
+    <figure><img src="../images/torchbearer_model.png" alt=""><figcaption>횃불이 휴머노이드 (진행 중)</figcaption></figure>
+  </div>
+  <span class="page-tag">박근호 · Computer Vision &amp; Robotics</span><span class="page-num">1 / 4</span>
+</section>
+
+<section class="page big">
+  <h2 class="sec">대표 프로젝트 (1) 자율주행 로봇</h2>
+
+  <div class="proj">
+    <div class="proj-head"><h3>RoboRacer 2026 — 1/10 스케일 자율주행 레이싱</h3><span class="year">2026.07 – 2026.08</span></div>
+    <p class="meta">제29회 RoboRacer Autonomous Racing Competition (IFAC 2026) · 팀 UNITA · 하드웨어 제작·튜닝 담당</p>
+    <div class="body-grid">
+      <div class="txt">
+        <p class="summary">차량 한 대의 Jetson Orin Nano에서 지도 작성부터 레이스라인 생성, 장애물 회피까지 수행하는 ROS 2 레이싱 스택입니다. ForzaETH race_stack을 기반으로 대회용 스택을 구성했습니다.</p>
+        <ul class="pts">
+          <li><strong>하드웨어 제작</strong> 상대 차량이 LiDAR로 인식하기 쉽도록 차량 위에 장착하는 직육면체 바운딩 박스와, 센서·부품을 고정하는 3D 프린팅 마운트 제작</li>
+          <li><strong>VESC 캘리브레이션</strong> 속도–ERPM 계수(4425)와 서보 사용 범위(0.12–0.77)를 실측해 보정하고, ERPM 상한을 약 8 m/s에 맞춰 재설정</li>
+          <li><strong>파라미터 튜닝</strong> 제어기 lookahead(t_clip_min 0.7→1.2, m_l1 0.47→0.62), 섹터별 속도 배율, 인식·회피 임계값을 실차 주행으로 조정</li>
+          <li><strong>팀 스택</strong> Cartographer 지도 · 파티클 필터+EKF 위치 추정 · 최소 곡률 레이스라인 · Pure Pursuit 제어 · LiDAR 검출과 상태 머신 기반 추월</li>
+        </ul>
+        <div class="tags"><span>ROS 2 Humble</span><span>Particle Filter</span><span>Min-curvature Raceline</span><span>Pure Pursuit</span><span>Jetson Orin Nano</span></div>
+      </div>
+      <figure><img src="../images/roboracer_raceline.png" alt=""><figcaption>IFAC 트랙 지도 위의 최소 곡률 레이스라인 (색은 최적화 속도)</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head"><h3>PARKY — 지하주차장 불법주차 단속 로봇</h3><span class="year">2026 캡스톤디자인</span></div>
+    <p class="meta">팀 OMZ · 윤창혁, 박근호, 염보은 · 캡스톤 디자인 경진대회 우수상, 산학 캡스톤 경진대회 대상</p>
+    <div class="body-grid">
+      <div class="txt">
+        <p class="summary">지도를 기반으로 지하주차장을 순찰하며, 통행로를 막은 차량과 번호판을 인식하는 자율주행 로봇입니다.</p>
+        <ul class="pts">
+          <li><strong>주행</strong> SLAM Toolbox로 만든 지도와 AMCL 위치 추정, Nav2 경로 계획. Keepout Filter로 주차 구획을 피해 통로만 따라 이동</li>
+          <li><strong>인식</strong> YOLO 객체 검출에 깊이 정보를 더해 사람·차량과의 거리를 파악하고, 카메라 좌표를 지도 좌표로 변환</li>
+          <li><strong>판정과 기록</strong> 같은 차량이 통행로에 5초 이상 머무르면 불법주차로 판정. YOLO와 EasyOCR로 번호판을 읽어 기록</li>
+          <li><strong>표현</strong> 정지·주행·장애물·단속 네 가지 상태를 표정 디스플레이로 표시</li>
+        </ul>
+        <div class="tags"><span>ROS 2</span><span>Nav2</span><span>LiDAR SLAM</span><span>YOLO · Depth</span><span>EasyOCR</span></div>
+      </div>
+      <figure><img src="../images/parky.jpg" alt=""><figcaption>표정 디스플레이와 깊이 카메라를 갖춘 PARKY</figcaption></figure>
+    </div>
+  </div>
+  <span class="page-tag">박근호 · Computer Vision &amp; Robotics</span><span class="page-num">2 / 4</span>
+</section>
+
+<section class="page big">
+  <h2 class="sec">대표 프로젝트 (2) HCI · 임베디드</h2>
+
+  <div class="proj">
+    <div class="proj-head"><h3>메가북스 — 아이트래킹 기반 4D 독서</h3><span class="year">2024.02 – 2024.10</span></div>
+    <p class="meta">팀 프로젝트 · Control Box 설계·제작·펌웨어 담당</p>
+    <div class="body-grid">
+      <div class="txt">
+        <p class="summary">독자의 시선을 추적해 지금 읽고 있는 문장을 찾고, 그 문장에 맞는 그림·소리·바람을 내보내는 독서 서비스입니다.</p>
+        <ul class="pts">
+          <li><strong>Control Box 전담</strong> 부품 선정(아두이노 나노·서보모터·CO2 카트리지), 3D 프린팅 하우징 제작, 블루투스 신호를 받아 서보모터로 CO2를 분출하는 펌웨어까지 직접 제작</li>
+          <li><strong>시선 판정</strong> SeeSo GazeTracker로 받은 시선 좌표를 One Euro Filter로 보정해, 화면의 세 문장 중 어느 줄을 읽는지 판정</li>
+          <li><strong>출력</strong> 문장마다 이미지·음향·공기 분출 여부를 연결해 화면과 빔프로젝터, 스피커, Control Box로 출력</li>
+          <li><strong>구성</strong> Android 앱 · Spring Boot 서버(JPA·QueryDSL·JWT) · Firebase 문장 데이터 · 생성형 AI로 만든 문장별 이미지와 음향</li>
+        </ul>
+        <div class="tags"><span>Eye Tracking</span><span>Android</span><span>Spring Boot</span><span>Arduino</span><span>Generative AI</span></div>
+      </div>
+      <figure><img src="../images/megabooks_concept.jpg" alt=""><figcaption>앱·빔프로젝터·Control Box로 구성한 4D 독서</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head"><h3>청각장애인을 위한 헤드셋형 보조기기</h3><span class="year">2024</span></div>
+    <p class="meta">2024 창업경진대회 · 팀 ESC 5인 · 팀장 · 인천대학교 창업경진대회 단과대학장상</p>
+    <div class="body-grid">
+      <div class="txt">
+        <p class="summary">주변 음성을 텍스트로 바꾸고, 중요한 키워드가 들어오면 진동으로 알려 주는 착용형 보조기기입니다.</p>
+        <ul class="pts">
+          <li><strong>출발점</strong> 마스크로 입모양이 가려지는 상황의 의사소통 제약. 중증 청각장애인 2명을 만나 실용성을 확인하고 제품 방향을 잡음</li>
+          <li><strong>흐름</strong> 음성 수집 → STT 변환 → 키워드·중요도 판단 → 앱 전달 → 진동 알림</li>
+          <li><strong>하드웨어</strong> 이어컵 안쪽의 ReSpeaker 음성 입력 모듈, Raspberry Pi 연산부와 배터리·전원 모듈, 3D 프린팅 헤드셋 하우징</li>
+          <li><strong>역할</strong> 5인 팀의 팀장으로 대회 참가와 개발, 시제품 제작을 이끔</li>
+        </ul>
+        <div class="tags"><span>Speech-to-Text</span><span>Embedded</span><span>Haptic Feedback</span><span>3D Printing</span></div>
+      </div>
+      <figure><img src="../images/headset.png" alt=""><figcaption>헤드셋형 시제품</figcaption></figure>
+    </div>
+  </div>
+  <span class="page-tag">박근호 · Computer Vision &amp; Robotics</span><span class="page-num">3 / 4</span>
+</section>
+
+<section class="page">
+  <h2 class="sec">진행 중인 프로젝트</h2>
+  <div class="proj" style="padding-top:0">
+    <div class="proj-head"><h3>횃불이 휴머노이드 — 마스코트를 걷게 만들기</h3><span class="year">2026.09 ~</span></div>
+    <p class="meta">개인 프로젝트 · 시뮬레이션 보행 학습 단계</p>
+    <div class="body-grid">
+      <div class="txt">
+        <p class="summary">인천대학교 마스코트 ‘횃불이’를 실제로 걷는 휴머노이드로 만드는 프로젝트입니다. 보유한 Dynamixel 서보 10개로 40 cm급 2족 하체를 설계하고, MuJoCo에서 강화학습으로 걷는 정책을 학습시키고 있습니다.</p>
+        <ul class="pts">
+          <li><strong>설계</strong> 다리당 5자유도(총 10자유도). 치수를 바꾸면 URDF와 MJCF가 함께 생성되는 스크립트로 모델을 만들고, 무작위 자세 5,000개에서 부품 간섭 0건을 확인</li>
+          <li><strong>토크 검토</strong> hip roll이 정지 토크의 약 38%로 병목 — 고관절 좌우 간격을 90 mm에서 76 mm로 줄여 여유 확보</li>
+          <li><strong>학습</strong> mjlab에 평지 속도 추종 태스크를 등록하고 rsl_rl PPO로 학습(환경 4,096개 병렬, 정책 50 Hz)</li>
+          <li><strong>다음 단계</strong> 모터 시스템 식별과 실측 질량 반영 후 실기체 조립, Sim2Real</li>
+        </ul>
+        <div class="tags"><span>MuJoCo</span><span>PPO</span><span>Humanoid</span><span>Dynamixel</span><span>Sim2Real</span></div>
+      </div>
+      <figure><img src="../images/torchbearer_model.png" alt=""><figcaption>생성 스크립트로 만든 2족 하체 모델</figcaption></figure>
+    </div>
+  </div>
+
+  <h2 class="sec" style="margin-top:4mm">교육과 커뮤니티</h2>
+  <div class="two">
+    <div class="mini">
+      <h4>코딩학당 — 운영 총괄 · 강사 (2022.06 ~)</h4>
+      <p>지역·교육환경에 따른 소프트웨어 교육 격차를 줄이기 위한 교육 봉사 프로젝트. 지금까지 17회의 캠프로 청소년 400명을 교육했고, Python·컴퓨터비전·생성형 AI·블록코딩 커리큘럼과 교재를 직접 제작했습니다.</p>
+      <h4>교내 AI/SW 리더</h4>
+      <p>비전공자 구성원에게 생성형 AI 활용법을 안내하고, 실제 업무를 함께 처리하는 서포터즈로 활동.</p>
+    </div>
+    <div class="mini">
+      <h4>ESC 드론 동아리</h4>
+      <p>Pixhawk 비행 제어 보드를 기반으로 드론을 직접 설계하고 제작.</p>
+      <h4>연구실 산학 협업</h4>
+      <p>양궁·골프 자세 분석 서비스의 개발 계획을 문서화하고, 연구실 반복 업무를 자동화하는 내부 도구를 개발.</p>
+      <h4>FogApp — 5인 팀 · 오픈소스 개발자대회 2026</h4>
+      <p>가본 곳만 지도의 안개가 걷히는 국내 여행 탐험 앱에 팀 프로젝트로 참여.</p>
+    </div>
+  </div>
+
+  <h2 class="sec" style="margin-top:4mm">수상</h2>
+  <table>
+    <tr><td class="date">2026.06</td><td>캡스톤 디자인 경진대회 우수상</td><td class="role">팀원</td></tr>
+    <tr><td class="date">2025.12</td><td>산학 캡스톤 경진대회 대상</td><td class="role">팀원</td></tr>
+    <tr><td class="date">2025.12</td><td>2025 INU MAKER 경진대회 장려상</td><td class="role role-b">팀장</td></tr>
+    <tr><td class="date">2024.11</td><td>착한지식 사회공헌 프로젝트 공모전 장려상</td><td class="role">팀원</td></tr>
+    <tr><td class="date">2024.11</td><td>인천대학교 창업경진대회 단과대학장상</td><td class="role role-b">팀장</td></tr>
+    <tr><td class="date">2023.12</td><td>2023 정보대 소프트웨어 컨테스트 장려상</td><td class="role role-b">팀장</td></tr>
+    <tr><td class="date">2023.12</td><td>2023 INU MAKER 경진대회 장려상</td><td class="role role-b">팀장</td></tr>
+  </table>
+
+  <p class="footer-note">각 프로젝트의 기술 문서와 코드, 시연 영상은 포트폴리오 사이트 pgh0621.github.io 에서 볼 수 있습니다.</p>
+  <span class="page-tag">박근호 · Computer Vision &amp; Robotics</span><span class="page-num">4 / 4</span>
+</section>
+</body></html>
