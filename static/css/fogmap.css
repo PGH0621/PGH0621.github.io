@@ -4,6 +4,11 @@
 .fogmap-page .detail-hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
 .fm-hero-figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #0f1115; }
 .fm-hero-figure img { display: block; width: 100%; height: auto; }
+.fm-hero-figure.is-logo { max-width: 300px; margin-inline: auto; border-radius: 22px; background: #fff; }
+.fm-hero-figure figcaption { padding: .55rem .2rem 0; color: var(--muted); font-size: .78rem; text-align: center; }
+.fm-store { max-width: 520px; margin: 1.75rem 0 0; }
+.fm-store img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+.fm-store figcaption { padding: .5rem .2rem 0; color: var(--muted); font-size: .78rem; }
 .fogmap-page .fm-facts { grid-template-columns: 1.5fr .8fr 1fr 1.2fr; }
 
 /* 02 담당 작업 */
